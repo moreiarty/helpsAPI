@@ -1,0 +1,12 @@
+C:\Users\Paul\Desktop\HELPS\UTS.HELPS.WebServices.DataAccess\bin\Release\UTS.HELPS.WebServices.DataAccess.dll.config
+C:\Users\Paul\Desktop\HELPS\UTS.HELPS.WebServices.DataAccess\bin\Release\UTS.HELPS.WebServices.DataAccess.dll
+C:\Users\Paul\Desktop\HELPS\UTS.HELPS.WebServices.DataAccess\bin\Release\UTS.HELPS.WebServices.DataAccess.pdb
+C:\Users\Paul\Desktop\HELPS\UTS.HELPS.WebServices.DataAccess\bin\Release\EntityFramework.dll
+C:\Users\Paul\Desktop\HELPS\UTS.HELPS.WebServices.DataAccess\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Paul\Desktop\HELPS\UTS.HELPS.WebServices.DataAccess\bin\Release\UTS.HELPS.WebServices.DataObjects.dll
+C:\Users\Paul\Desktop\HELPS\UTS.HELPS.WebServices.DataAccess\bin\Release\UTS.HELPS.WebServices.DataObjects.pdb
+C:\Users\Paul\Desktop\HELPS\UTS.HELPS.WebServices.DataAccess\bin\Release\EntityFramework.xml
+C:\Users\Paul\Desktop\HELPS\UTS.HELPS.WebServices.DataAccess\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Paul\Desktop\HELPS\UTS.HELPS.WebServices.DataAccess\obj\Release\UTS.HELPS.WebServices.DataAccess.csprojResolveAssemblyReference.cache
+C:\Users\Paul\Desktop\HELPS\UTS.HELPS.WebServices.DataAccess\obj\Release\UTS.HELPS.WebServices.DataAccess.dll
+C:\Users\Paul\Desktop\HELPS\UTS.HELPS.WebServices.DataAccess\obj\Release\UTS.HELPS.WebServices.DataAccess.pdb

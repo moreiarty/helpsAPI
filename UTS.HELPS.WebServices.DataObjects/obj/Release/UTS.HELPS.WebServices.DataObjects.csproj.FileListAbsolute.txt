@@ -1,0 +1,5 @@
+C:\Users\Paul\Desktop\HELPS\UTS.HELPS.WebServices.DataObjects\bin\Release\UTS.HELPS.WebServices.DataObjects.dll
+C:\Users\Paul\Desktop\HELPS\UTS.HELPS.WebServices.DataObjects\bin\Release\UTS.HELPS.WebServices.DataObjects.pdb
+C:\Users\Paul\Desktop\HELPS\UTS.HELPS.WebServices.DataObjects\obj\Release\UTS.HELPS.WebServices.DataObjects.csprojResolveAssemblyReference.cache
+C:\Users\Paul\Desktop\HELPS\UTS.HELPS.WebServices.DataObjects\obj\Release\UTS.HELPS.WebServices.DataObjects.dll
+C:\Users\Paul\Desktop\HELPS\UTS.HELPS.WebServices.DataObjects\obj\Release\UTS.HELPS.WebServices.DataObjects.pdb

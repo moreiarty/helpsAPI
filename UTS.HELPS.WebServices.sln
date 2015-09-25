@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UTS.HELPS.WebServices.WebAPI", "UTS.HELPS.WebServices.WebAPI\UTS.HELPS.WebServices.WebAPI.csproj", "{57E90364-7BEC-46A0-B401-D0E6624C534C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UTS.HELPS.WebServices.DataAccess", "UTS.HELPS.WebServices.DataAccess\UTS.HELPS.WebServices.DataAccess.csproj", "{D0A0141A-3AEF-428F-ABC2-BDDF2786F0D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UTS.HELPS.WebServices.DataObjects", "UTS.HELPS.WebServices.DataObjects\UTS.HELPS.WebServices.DataObjects.csproj", "{A6505115-A0E7-453C-BB43-8951B5699754}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{7495278E-78F2-4A4C-BADE-1C4035FA44A3}"
+	ProjectSection(SolutionItems) = preProject
+		SQL\CreateTables.sql = SQL\CreateTables.sql
+		SQL\prcCancelWorkshopBooking.sql = SQL\prcCancelWorkshopBooking.sql
+		SQL\prcCreateStudent.sql = SQL\prcCreateStudent.sql
+		SQL\prcCreateWorkshopBooking.sql = SQL\prcCreateWorkshopBooking.sql
+		SQL\prcCreateWorkshopWaiting.sql = SQL\prcCreateWorkshopWaiting.sql
+		SQL\prcGetSession.sql = SQL\prcGetSession.sql
+		SQL\prcGetSessionBooking.sql = SQL\prcGetSessionBooking.sql
+		SQL\prcGetStudent.sql = SQL\prcGetStudent.sql
+		SQL\prcGetWorkshop.sql = SQL\prcGetWorkshop.sql
+		SQL\prcGetWorkshopBooking.sql = SQL\prcGetWorkshopBooking.sql
+		prcGetWorkshopDetail.sql = prcGetWorkshopDetail.sql
+		SQL\prcGetWorkshopWaiting.sql = SQL\prcGetWorkshopWaiting.sql
+		SQL\prcListAppointments.sql = SQL\prcListAppointments.sql
+		SQL\prcListAssignments.sql = SQL\prcListAssignments.sql
+		SQL\prcListCampuses.sql = SQL\prcListCampuses.sql
+		SQL\prcListLecturers.sql = SQL\prcListLecturers.sql
+		SQL\prcListSessionTypes.sql = SQL\prcListSessionTypes.sql
+		SQL\prcListWorkShopSets.sql = SQL\prcListWorkShopSets.sql
+		SQL\prcSearchSessionBookings.sql = SQL\prcSearchSessionBookings.sql
+		SQL\prcSearchWorkshopBookings.sql = SQL\prcSearchWorkshopBookings.sql
+		SQL\prcSearchWorkshops.sql = SQL\prcSearchWorkshops.sql
+		SQL\prcUpdateSessionBooking.sql = SQL\prcUpdateSessionBooking.sql
+		SQL\prcUpdateWorkshopBooking.sql = SQL\prcUpdateWorkshopBooking.sql
+		SQL\ufnGetWaitingCount.sql = SQL\ufnGetWaitingCount.sql
+		SQL\ufnGetWorkshopBookingCount.sql = SQL\ufnGetWorkshopBookingCount.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{57E90364-7BEC-46A0-B401-D0E6624C534C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57E90364-7BEC-46A0-B401-D0E6624C534C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57E90364-7BEC-46A0-B401-D0E6624C534C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57E90364-7BEC-46A0-B401-D0E6624C534C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0A0141A-3AEF-428F-ABC2-BDDF2786F0D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0A0141A-3AEF-428F-ABC2-BDDF2786F0D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0A0141A-3AEF-428F-ABC2-BDDF2786F0D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0A0141A-3AEF-428F-ABC2-BDDF2786F0D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6505115-A0E7-453C-BB43-8951B5699754}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6505115-A0E7-453C-BB43-8951B5699754}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6505115-A0E7-453C-BB43-8951B5699754}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6505115-A0E7-453C-BB43-8951B5699754}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
