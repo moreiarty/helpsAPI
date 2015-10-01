@@ -331,6 +331,9 @@
     <Property Type="String" Name="DaysOfWeek" Nullable="true" MaxLength="50" />
     <Property Type="Int32" Name="BookingCount" Nullable="true" />
     <Property Type="DateTime" Name="archived" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="NumOfWeeks" Nullable="true" />
+    <Property Type="DateTime" Name="ProgramStartDate" Nullable="true" />
+    <Property Type="DateTime" Name="ProgramEndDate" Nullable="true" />
   </ComplexType>
   <ComplexType Name="Appointment">
     <Property Type="Int32" Name="id" Nullable="false" />

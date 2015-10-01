@@ -376,7 +376,7 @@ namespace UTS.HELPS.WebServices.DataAccess
                 new ObjectParameter("topic", typeof(string));
     
             var startingDtBeginParameter = startingDtBegin.HasValue ?
-                new ObjectParameter("startingDtBegin", startingDtBegin.Value.ToUniversalTime()) :
+                new ObjectParameter("startingDtBegin", startingDtBegin) :
                 new ObjectParameter("startingDtBegin", typeof(System.DateTime));
     
             var startingDtEndParameter = startingDtEnd.HasValue ?

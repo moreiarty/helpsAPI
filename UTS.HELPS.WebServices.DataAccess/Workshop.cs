@@ -29,5 +29,8 @@ namespace UTS.HELPS.WebServices.DataAccess
         public string DaysOfWeek { get; set; }
         public Nullable<int> BookingCount { get; set; }
         public Nullable<System.DateTime> archived { get; set; }
+        public Nullable<int> NumOfWeeks { get; set; }
+        public Nullable<System.DateTime> ProgramStartDate { get; set; }
+        public Nullable<System.DateTime> ProgramEndDate { get; set; }
     }
 }
