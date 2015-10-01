@@ -19,7 +19,7 @@ AS
 		@nl char(2) = char(13) + char(10)
 
 	SET @sql = 'SELECT WorkshopId, topic, description, targetingGroup, campus, StartDate, EndDate,
-				maximum, WorkShopSetID, cutoff, type, reminder_num, reminder_sent, DaysOfWeek, BookingCount, archived
+				maximum, WorkShopSetID, cutoff, type, reminder_num, reminder_sent, DaysOfWeek, NumOfWeeks, ProgramStartDate, ProgramEndDate, BookingCount, archived
 				FROM 		
 				(
 				SELECT w.id as WorkshopId,
@@ -36,6 +36,9 @@ AS
 					w.reminder_num,
 					w.reminder_sent,
 					p.days as DaysOfWeek,
+					p.numOfWeeks as NumOfWeeks,
+					p.startDate as ProgramStartDate,
+					p.endDate as ProgramEndDate,
 					dbo.ufnGetBookingCount(w.id) as BookingCount,
 					w.archived,
 					ROW_NUMBER() OVER (ORDER BY w.Id) AS RowNum

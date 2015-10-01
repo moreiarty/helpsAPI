@@ -285,6 +285,9 @@
           <ScalarProperty Name="DaysOfWeek" ColumnName="DaysOfWeek" />
           <ScalarProperty Name="BookingCount" ColumnName="BookingCount" />
           <ScalarProperty Name="archived" ColumnName="archived" />
+          <ScalarProperty Name="NumOfWeeks" ColumnName="NumOfWeeks" />
+          <ScalarProperty Name="ProgramStartDate" ColumnName="ProgramStartDate" />
+          <ScalarProperty Name="ProgramEndDate" ColumnName="ProgramEndDate" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
