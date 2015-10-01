@@ -502,6 +502,7 @@
           <Property Type="Int32" Name="NumOfWeeks" Nullable="true" />
           <Property Type="DateTime" Name="ProgramStartDate" Nullable="true" />
           <Property Type="DateTime" Name="ProgramEndDate" Nullable="true" />
+          <Property Type="Int32" Name="ProgramId" Nullable="true" />
         </ComplexType>
         <ComplexType Name="Appointment">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -817,6 +818,7 @@
                 <ScalarProperty Name="NumOfWeeks" ColumnName="NumOfWeeks" />
                 <ScalarProperty Name="ProgramStartDate" ColumnName="ProgramStartDate" />
                 <ScalarProperty Name="ProgramEndDate" ColumnName="ProgramEndDate" />
+                <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

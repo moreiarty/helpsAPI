@@ -32,5 +32,6 @@ namespace UTS.HELPS.WebServices.DataAccess
         public Nullable<int> NumOfWeeks { get; set; }
         public Nullable<System.DateTime> ProgramStartDate { get; set; }
         public Nullable<System.DateTime> ProgramEndDate { get; set; }
+        public Nullable<int> ProgramId { get; set; }
     }
 }

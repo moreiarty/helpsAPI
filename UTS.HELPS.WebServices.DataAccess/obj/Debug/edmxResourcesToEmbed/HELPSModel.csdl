@@ -334,6 +334,7 @@
     <Property Type="Int32" Name="NumOfWeeks" Nullable="true" />
     <Property Type="DateTime" Name="ProgramStartDate" Nullable="true" />
     <Property Type="DateTime" Name="ProgramEndDate" Nullable="true" />
+    <Property Type="Int32" Name="ProgramId" Nullable="true" />
   </ComplexType>
   <ComplexType Name="Appointment">
     <Property Type="Int32" Name="id" Nullable="false" />

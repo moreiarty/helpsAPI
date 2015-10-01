@@ -7,7 +7,7 @@ AS
     SET NOCOUNT ON;
 
 			SELECT WorkshopId, topic, description, targetingGroup, campus, StartDate, EndDate,
-				maximum, WorkShopSetID, cutoff, type, reminder_num, reminder_sent, DaysOfWeek, NumOfWeeks, ProgramStartDate, ProgramEndDate, BookingCount, archived
+				maximum, WorkShopSetID, cutoff, type, reminder_num, reminder_sent, DaysOfWeek, ProgramId, NumOfWeeks, ProgramStartDate, ProgramEndDate, BookingCount, archived
 			FROM 		
 				(
 				SELECT w.id as WorkshopId,
@@ -24,6 +24,7 @@ AS
 					w.reminder_num,
 					w.reminder_sent,
 					p.days as DaysOfWeek,
+					p.id as ProgramId,
 					p.numOfWeeks as NumOfWeeks,
 					p.startDate as ProgramStartDate,
 					p.endDate as ProgramEndDate,

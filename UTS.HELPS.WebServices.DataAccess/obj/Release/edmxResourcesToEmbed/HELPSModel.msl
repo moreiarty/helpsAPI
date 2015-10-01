@@ -288,6 +288,7 @@
           <ScalarProperty Name="NumOfWeeks" ColumnName="NumOfWeeks" />
           <ScalarProperty Name="ProgramStartDate" ColumnName="ProgramStartDate" />
           <ScalarProperty Name="ProgramEndDate" ColumnName="ProgramEndDate" />
+          <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
