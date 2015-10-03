@@ -68,7 +68,7 @@ namespace UTS.HELPS.WebServices.WebAPI.Controllers
 
                 // Check booking doesn't already exist
                 BasicWorkshopBooking booking = WorkshopDb.GetWorkshopBooking(workshopId, studentId);
-                if (booking != null && !booking.archived.HasValue)
+                if (booking != null)
                 {
                     return new Response()
                     {
