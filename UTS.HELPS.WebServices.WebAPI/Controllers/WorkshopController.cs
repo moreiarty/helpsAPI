@@ -106,6 +106,55 @@ namespace UTS.HELPS.WebServices.WebAPI.Controllers
         }
 
         [HttpPost]
+        [Route("api/program/booking/create")]
+        public Response CreateProgramBooking(int programId, string studentId, int userId)
+        {
+            var workshops = WorkshopDb.GetProgramWorkshops(programId);
+            string reason = null;
+            foreach (int? workshop in workshops)
+            {
+                if (workshop.HasValue)
+                {
+                    var response = CreateWorkshopBooking(workshop.Value, studentId, userId);
+                    if (!response.IsSuccess)
+                        reason = response.DisplayMessage;
+                }
+            }
+            if (reason != null)
+                return new Response()
+                {
+                    IsSuccess = false,
+                    DisplayMessage = reason
+                };
+            return new Response() {IsSuccess = true};
+        }
+
+
+        [HttpPost]
+        [Route("api/program/booking/cancel")]
+        public Response CancelProgramBooking(int programId, string studentId, int userId)
+        {
+            var workshops = WorkshopDb.GetProgramWorkshops(programId);
+            string reason = null;
+            foreach (int? workshop in workshops)
+            {
+                if (workshop.HasValue)
+                {
+                    var response = CancelWorkshopBooking(workshop.Value, studentId, userId);
+                    if (!response.IsSuccess)
+                        reason = response.DisplayMessage;
+                }
+            }
+            if (reason != null)
+                return new Response()
+                {
+                    IsSuccess = false,
+                    DisplayMessage = reason
+                };
+            return new Response() { IsSuccess = true };
+        }
+
+        [HttpPost]
         [Route("api/workshop/wait/create")]
         public Response CreateWorkshopWaiting(int workshopId, string studentId, int userId, int? priority = null)
         {

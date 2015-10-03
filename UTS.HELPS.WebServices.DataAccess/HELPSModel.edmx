@@ -51,6 +51,9 @@
           <Parameter Name="priority" Type="int" Mode="In" />
           <Parameter Name="userId" Type="int" Mode="In" />
         </Function>
+        <Function Name="prcGetProgramWorkshops" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="programId" Type="int" Mode="In" />
+        </Function>
         <Function Name="prcGetSession" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="sessionId" Type="int" Mode="In" />
         </Function>
@@ -157,10 +160,16 @@
           <Parameter Name="attended" Type="int" Mode="In" />
           <Parameter Name="userId" Type="int" Mode="In" />
         </Function>
+        <Function Name="ufnGetBookingCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="workshopId" Type="int" Mode="In" />
+        </Function>
         <Function Name="ufnGetWaitingCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
           <Parameter Name="workshopId" Type="int" Mode="In" />
         </Function>
         <Function Name="ufnGetWorkshopBookingCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="workshopId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ufnGetWorkshopCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
           <Parameter Name="workshopId" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="HELPSModelStoreContainer" />
@@ -319,7 +328,10 @@
           <Parameter Name="active" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="prcGetWorkshopDetail" ReturnType="Collection(HELPSModel.Workshop)">
-            <Parameter Name="workshopId" Mode="In" Type="Int32" />
+          <Parameter Name="workshopId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="prcGetProgramWorkshops" ReturnType="Collection(Int32)">
+            <Parameter Name="programId" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SessionType">
@@ -822,6 +834,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="prcGetProgramWorkshops" FunctionName="HELPSModel.Store.prcGetProgramWorkshops" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

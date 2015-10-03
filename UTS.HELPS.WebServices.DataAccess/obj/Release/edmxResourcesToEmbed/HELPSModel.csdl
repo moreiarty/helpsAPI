@@ -153,6 +153,9 @@
     <FunctionImport Name="prcGetWorkshopDetail" ReturnType="Collection(HELPSModel.Workshop)">
       <Parameter Name="workshopId" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="prcGetProgramWorkshops" ReturnType="Collection(Int32)">
+      <Parameter Name="programId" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="SessionType">
     <Property Type="Int32" Name="id" Nullable="false" />

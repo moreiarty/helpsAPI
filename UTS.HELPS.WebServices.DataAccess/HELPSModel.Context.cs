@@ -569,5 +569,14 @@ namespace UTS.HELPS.WebServices.DataAccess
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Workshop>("prcGetWorkshopDetail", workshopIdParameter);
         }
+    
+        public virtual ObjectResult<Nullable<int>> prcGetProgramWorkshops(Nullable<int> programId)
+        {
+            var programIdParameter = programId.HasValue ?
+                new ObjectParameter("programId", programId) :
+                new ObjectParameter("programId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("prcGetProgramWorkshops", programIdParameter);
+        }
     }
 }

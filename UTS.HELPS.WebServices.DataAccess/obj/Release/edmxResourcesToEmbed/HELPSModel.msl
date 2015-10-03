@@ -292,5 +292,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="prcGetProgramWorkshops" FunctionName="HELPSModel.Store.prcGetProgramWorkshops" />
   </EntityContainerMapping>
 </Mapping>

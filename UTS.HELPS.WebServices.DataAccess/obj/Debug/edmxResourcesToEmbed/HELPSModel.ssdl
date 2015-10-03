@@ -46,6 +46,9 @@
     <Parameter Name="priority" Type="int" Mode="In" />
     <Parameter Name="userId" Type="int" Mode="In" />
   </Function>
+  <Function Name="prcGetProgramWorkshops" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="programId" Type="int" Mode="In" />
+  </Function>
   <Function Name="prcGetSession" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="sessionId" Type="int" Mode="In" />
   </Function>
@@ -152,10 +155,16 @@
     <Parameter Name="attended" Type="int" Mode="In" />
     <Parameter Name="userId" Type="int" Mode="In" />
   </Function>
+  <Function Name="ufnGetBookingCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="workshopId" Type="int" Mode="In" />
+  </Function>
   <Function Name="ufnGetWaitingCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
     <Parameter Name="workshopId" Type="int" Mode="In" />
   </Function>
   <Function Name="ufnGetWorkshopBookingCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="workshopId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ufnGetWorkshopCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
     <Parameter Name="workshopId" Type="int" Mode="In" />
   </Function>
   <EntityContainer Name="HELPSModelStoreContainer" />
