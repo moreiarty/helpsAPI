@@ -105,7 +105,7 @@ namespace UTS.HELPS.WebServices.DataAccess
             using (HELPSEntities ctx = new HELPSEntities())
             {
                 ctx.prcUpdateWorkshopBooking(update.WorkshopId, update.StudentId, 
-                    update.Canceled, update.Attended, update.UserId);
+                    update.Canceled, update.Attended, update.UserId, update.Notes);
             }
         }
     }

@@ -134,6 +134,7 @@
       <Parameter Name="canceled" Mode="In" Type="Int32" />
       <Parameter Name="attended" Mode="In" Type="Int32" />
       <Parameter Name="userId" Mode="In" Type="Int32" />
+      <Parameter Name="notes" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="prcListAppointments" ReturnType="Collection(HELPSModel.Appointment)">
       <Parameter Name="active" Mode="In" Type="Boolean" />

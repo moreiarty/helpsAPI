@@ -6,7 +6,8 @@ ALTER PROCEDURE dbo.prcUpdateWorkshopBooking
 	@studentId char(10),
 	@canceled int = null,
 	@attended int = null,
-	@userId int
+	@userId int,
+	@notes nvarchar(max) = null
 AS 
     SET NOCOUNT ON;
 
@@ -21,6 +22,13 @@ AS
 	BEGIN
 		UPDATE workShops_booking
 		SET attended = @attended, modified = getdate(), modifierId = @userId
+		WHERE workshopID = @workshopId AND studentId = @studentId
+	END
+
+	IF @notes is not null
+	BEGIN
+		UPDATE workShops_booking
+		SET notes = CAST(@notes AS ntext), modified = getdate(), modifierId = @userId
 		WHERE workshopID = @workshopId AND studentId = @studentId
 	END
 

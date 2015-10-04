@@ -28,6 +28,7 @@ namespace UTS.HELPS.WebServices.DataAccess
         public Nullable<int> attended { get; set; }
         public Nullable<int> WorkShopSetID { get; set; }
         public string type { get; set; }
+        public string notes { get; set; }
         public Nullable<int> reminder_num { get; set; }
         public Nullable<int> reminder_sent { get; set; }
         public Nullable<System.DateTime> WorkshopArchived { get; set; }

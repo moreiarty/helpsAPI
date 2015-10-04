@@ -18,7 +18,7 @@ AS
 			@nl char(2) = char(13) + char(10)
 
 	SET @sql = 'SELECT BookingId, workshopID, studentID, topic, description, targetingGroup, 
-					campusID, starting, ending, maximum, cutoff, canceled, attended, workshopsetid,
+					campusID, starting, ending, maximum, cutoff, notes, canceled, attended, workshopsetid,
 					type, reminder_num, reminder_sent, WorkshopArchived, BookingArchived
 				FROM 		
 				(
@@ -33,6 +33,7 @@ AS
 					w.ending,
 					w.maximum,
 					w.cutoff,
+					wb.notes,
 					wb.canceled,
 					wb.attended,
 					w.WorkShopSetID,
@@ -79,6 +80,12 @@ AS
 			SET @sql = @sql + ' AND w.archived is not null AND wb.archived is not null ' + @nl
 		END
 	END
+
+	IF @studentID is not null
+	BEGIN
+		SET @sql = @sql + ' AND wb.studentID = ' + CONVERT(varchar(10), @studentID) + ' ' + @nl
+	END
+
 
 	SET @sql = @sql + ') AS tbl WHERE tbl.RowNum BETWEEN ' +  CONVERT(varchar(5), ((@page-1)*@pageSize)+1) + ' ' + @nl
 	SET @sql = @sql + ' AND ' + CONVERT(varchar(5), @page*@pageSize) + ' ' + @nl

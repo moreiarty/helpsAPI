@@ -159,6 +159,7 @@
           <Parameter Name="canceled" Type="int" Mode="In" />
           <Parameter Name="attended" Type="int" Mode="In" />
           <Parameter Name="userId" Type="int" Mode="In" />
+          <Parameter Name="notes" Type="ntext" Mode="In" />
         </Function>
         <Function Name="ufnGetBookingCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
           <Parameter Name="workshopId" Type="int" Mode="In" />
@@ -311,6 +312,7 @@
             <Parameter Name="canceled" Mode="In" Type="Int32" />
             <Parameter Name="attended" Mode="In" Type="Int32" />
             <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="notes" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="prcListAppointments" ReturnType="Collection(HELPSModel.Appointment)">
           <Parameter Name="active" Mode="In" Type="Boolean" />
@@ -331,7 +333,7 @@
           <Parameter Name="workshopId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="prcGetProgramWorkshops" ReturnType="Collection(Int32)">
-            <Parameter Name="programId" Mode="In" Type="Int32" />
+          <Parameter Name="programId" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SessionType">

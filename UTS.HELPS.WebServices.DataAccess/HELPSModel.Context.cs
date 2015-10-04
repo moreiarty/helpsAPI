@@ -491,7 +491,7 @@ namespace UTS.HELPS.WebServices.DataAccess
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("prcUpdateSessionBooking", sessionIdParameter, studentIdParameter, cancelParameter, assisstanceParameter, reasonParameter, attendedParameter, waitingIDParameter, isgroupParameter, numpeopleParameter, lecturercommentParameter, learningissuesParameter, islockedParameter, assigntypeParameter, assigntypeOtherParameter, subjectParameter, appointmentsParameter, appointmentsOtherParameter, assisstanceTextParameter, userIdParameter);
         }
     
-        public virtual int prcUpdateWorkshopBooking(Nullable<int> workshopId, string studentId, Nullable<int> canceled, Nullable<int> attended, Nullable<int> userId)
+        public virtual int prcUpdateWorkshopBooking(Nullable<int> workshopId, string studentId, Nullable<int> canceled, Nullable<int> attended, Nullable<int> userId, string notes)
         {
             var workshopIdParameter = workshopId.HasValue ?
                 new ObjectParameter("workshopId", workshopId) :
@@ -513,7 +513,11 @@ namespace UTS.HELPS.WebServices.DataAccess
                 new ObjectParameter("userId", userId) :
                 new ObjectParameter("userId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("prcUpdateWorkshopBooking", workshopIdParameter, studentIdParameter, canceledParameter, attendedParameter, userIdParameter);
+            var notesParameter = notes != null ?
+                new ObjectParameter("notes", notes) :
+                new ObjectParameter("notes", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("prcUpdateWorkshopBooking", workshopIdParameter, studentIdParameter, canceledParameter, attendedParameter, userIdParameter, notesParameter);
         }
     
         public virtual ObjectResult<Appointment> prcListAppointments(Nullable<bool> active)

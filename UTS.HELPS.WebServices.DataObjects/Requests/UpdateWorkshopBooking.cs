@@ -7,5 +7,6 @@
         public int? Canceled { get; set; }
         public int? Attended { get; set; }
         public int UserId { get; set; }
+        public string Notes { get; set; }
     }
 }

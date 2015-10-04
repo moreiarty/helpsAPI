@@ -154,6 +154,7 @@
     <Parameter Name="canceled" Type="int" Mode="In" />
     <Parameter Name="attended" Type="int" Mode="In" />
     <Parameter Name="userId" Type="int" Mode="In" />
+    <Parameter Name="notes" Type="ntext" Mode="In" />
   </Function>
   <Function Name="ufnGetBookingCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
     <Parameter Name="workshopId" Type="int" Mode="In" />
