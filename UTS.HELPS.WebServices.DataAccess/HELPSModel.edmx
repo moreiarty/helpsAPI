@@ -491,6 +491,7 @@
           <Property Type="Int32" Name="attended" Nullable="true" />
           <Property Type="Int32" Name="WorkShopSetID" Nullable="true" />
           <Property Type="String" Name="type" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="notes" Nullable="true" MaxLength="Max" />
           <Property Type="Int32" Name="reminder_num" Nullable="true" />
           <Property Type="Int32" Name="reminder_sent" Nullable="true" />
           <Property Type="DateTime" Name="WorkshopArchived" Nullable="true" Precision="23" />
@@ -728,6 +729,7 @@
                 <ScalarProperty Name="attended" ColumnName="attended" />
                 <ScalarProperty Name="WorkShopSetID" ColumnName="WorkShopSetID" />
                 <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
                 <ScalarProperty Name="reminder_num" ColumnName="reminder_num" />
                 <ScalarProperty Name="reminder_sent" ColumnName="reminder_sent" />
                 <ScalarProperty Name="WorkshopArchived" ColumnName="WorkshopArchived" />

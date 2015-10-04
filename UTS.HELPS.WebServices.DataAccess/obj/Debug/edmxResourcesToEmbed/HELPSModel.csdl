@@ -313,6 +313,7 @@
     <Property Type="Int32" Name="attended" Nullable="true" />
     <Property Type="Int32" Name="WorkShopSetID" Nullable="true" />
     <Property Type="String" Name="type" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="notes" Nullable="true" MaxLength="Max" />
     <Property Type="Int32" Name="reminder_num" Nullable="true" />
     <Property Type="Int32" Name="reminder_sent" Nullable="true" />
     <Property Type="DateTime" Name="WorkshopArchived" Nullable="true" Precision="23" />
