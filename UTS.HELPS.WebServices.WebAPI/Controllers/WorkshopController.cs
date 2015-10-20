@@ -393,8 +393,7 @@ namespace UTS.HELPS.WebServices.WebAPI.Controllers
                         DisplayMessage = ErrorMessages.WORKSHOP_NOT_FOUND
                     };
                 }
-
-                if (DateTime.UtcNow.AddDays(7) > workshop.EndDate && update.Notes != null)
+                if (DateTime.UtcNow.AddDays(-7) > workshop.EndDate && update.Notes != null)
                 {
                     return new Response()
                     {
