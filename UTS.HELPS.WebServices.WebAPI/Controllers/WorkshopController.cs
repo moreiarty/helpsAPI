@@ -394,7 +394,7 @@ namespace UTS.HELPS.WebServices.WebAPI.Controllers
                     };
                 }
 
-                if (DateTime.UtcNow.AddDays(7) > workshop.EndDate)
+                if (DateTime.UtcNow.AddDays(7) > workshop.EndDate && update.Notes != null)
                 {
                     return new Response()
                     {
