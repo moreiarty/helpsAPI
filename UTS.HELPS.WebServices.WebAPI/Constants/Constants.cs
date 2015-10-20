@@ -28,5 +28,7 @@
         public static readonly string CANCEL_WORKSHOP_BOOKING_ERROR = "Error canceling workshop booking: {0}";
         public static readonly string UPDATE_SESSION_BOOKING_ERROR = "Error updating session booking: {0}";
         public static readonly string UPDATE_WORKSHOP_BOOKING_ERROR = "Error updating workshop booking: {0}";
+
+        public static readonly string NOTES_LOCKOUT = "Cannot update notes more than one week after the workshop has ended";
     }
 }

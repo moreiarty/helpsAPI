@@ -375,13 +375,31 @@ namespace UTS.HELPS.WebServices.WebAPI.Controllers
             try
             {
                 base.CheckApplicationKey();
-
                 if (update == null)
                 {
                     return new Response()
                     {
                         IsSuccess = false,
                         DisplayMessage = ErrorMessages.UPDATE_REQ_ERROR
+                    };
+                }
+
+                var workshop = WorkshopDb.GetWorkshopDetail(update.WorkshopId);
+                if (workshop == null)
+                {
+                    return new Response()
+                    {
+                        IsSuccess = false,
+                        DisplayMessage = ErrorMessages.WORKSHOP_NOT_FOUND
+                    };
+                }
+
+                if (DateTime.UtcNow.AddDays(7) > workshop.EndDate)
+                {
+                    return new Response()
+                    {
+                        IsSuccess = false,
+                        DisplayMessage = ErrorMessages.NOTES_LOCKOUT
                     };
                 }
 
