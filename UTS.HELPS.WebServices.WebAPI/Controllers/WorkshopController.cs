@@ -264,8 +264,44 @@ namespace UTS.HELPS.WebServices.WebAPI.Controllers
             }
         }
 
-        [
-            HttpPost]
+        [HttpGet]
+        [Route("api/workshop/wait")]
+        public WaitListResponse IsWorkshopWaiting(int workshopId, string studentId)
+        {
+            try
+            {
+                base.CheckApplicationKey();
+
+                // Check the workshop exists
+                BasicWorkshop workshop = WorkshopDb.GetWorkshop(workshopId);
+                if (workshop == null)
+                {
+                    return new WaitListResponse()
+                    {
+                        IsSuccess = false,
+                        DisplayMessage = ErrorMessages.WORKSHOP_NOT_FOUND
+                    };
+                }
+
+                BasicWorkshopWaiting waiting = WorkshopDb.GetWorkshopWaiting(workshopId, studentId);
+                return new WaitListResponse()
+                {
+                    IsWaitListed = waiting != null && !waiting.archived.HasValue,
+                    IsSuccess = true
+                };
+            }
+            catch (Exception e)
+            {
+                string msg = CreateExceptionMessage(e);
+                return new WaitListResponse()
+                {
+                    IsSuccess = false,
+                    DisplayMessage = string.Format(ErrorMessages.CREATE_WORKSHOP_WAITING_ERROR, msg)
+                };
+            }
+        }
+
+        [HttpPost]
         [Route("api/workshop/booking/cancel")]
         public Response CancelWorkshopBooking(int workshopId, string studentId, int userId)
         {

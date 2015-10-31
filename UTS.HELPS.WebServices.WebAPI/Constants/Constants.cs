@@ -24,7 +24,7 @@
         public static readonly string CREATE_WORKSHOP_WAITING_ERROR = "Error creating workshop wait-list entry: {0}";
         public static readonly string CREATE_WORKSHOP_WAITING_BOOKING_EXISTS_ERROR = "Error creating workshop wait-list entry: Student has booking for this workshop.";
         public static readonly string CREATE_WORKSHOP_WAITING_EXISTS_ERROR = "Error creating workshop wait-list entry: Student is already on the wait-list.";
-        
+
         public static readonly string CANCEL_WORKSHOP_BOOKING_ERROR = "Error canceling workshop booking: {0}";
         public static readonly string UPDATE_SESSION_BOOKING_ERROR = "Error updating session booking: {0}";
         public static readonly string UPDATE_WORKSHOP_BOOKING_ERROR = "Error updating workshop booking: {0}";

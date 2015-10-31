@@ -175,6 +175,7 @@
     <Compile Include="Responses\SessionBookingListResponse.cs" />
     <Compile Include="Responses\Response.cs" />
     <Compile Include="Responses\SessionTypeListResponse.cs" />
+    <Compile Include="Responses\WaitListResponse.cs" />
     <Compile Include="Responses\WorkshopBookingListResponse.cs" />
     <Compile Include="Responses\WaitListCountResponse.cs" />
     <Compile Include="Responses\WorkshopListResponse.cs" />
