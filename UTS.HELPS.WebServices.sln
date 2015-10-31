@@ -24,6 +24,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{7495278E-78F
 		SQL\prcGetWorkshopBooking.sql = SQL\prcGetWorkshopBooking.sql
 		SQL\prcGetWorkshopDetail.sql = SQL\prcGetWorkshopDetail.sql
 		SQL\prcGetWorkshopWaiting.sql = SQL\prcGetWorkshopWaiting.sql
+		prcGetWorkshopWaitingList.sql = prcGetWorkshopWaitingList.sql
 		SQL\prcListAppointments.sql = SQL\prcListAppointments.sql
 		SQL\prcListAssignments.sql = SQL\prcListAssignments.sql
 		SQL\prcListCampuses.sql = SQL\prcListCampuses.sql

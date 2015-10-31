@@ -157,6 +157,28 @@
     <FunctionImport Name="prcGetProgramWorkshops" ReturnType="Collection(Int32)">
       <Parameter Name="programId" Mode="In" Type="Int32" />
     </FunctionImport>
+    <EntitySet Name="bookings" EntityType="HELPSModel.booking" />
+    <EntitySet Name="emailtemplates" EntityType="HELPSModel.emailtemplate" />
+    <EntitySet Name="lecturer1" EntityType="HELPSModel.lecturer1" />
+    <EntitySet Name="appointment1" EntityType="HELPSModel.appointment1" />
+    <EntitySet Name="assignment1" EntityType="HELPSModel.assignment1" />
+    <EntitySet Name="campus" EntityType="HELPSModel.campu" />
+    <EntitySet Name="emailtemplatesCategories" EntityType="HELPSModel.emailtemplatesCategory" />
+    <EntitySet Name="learningissues" EntityType="HELPSModel.learningissue" />
+    <EntitySet Name="messages" EntityType="HELPSModel.message" />
+    <EntitySet Name="programs" EntityType="HELPSModel.program" />
+    <EntitySet Name="sessionDocuments" EntityType="HELPSModel.sessionDocument" />
+    <EntitySet Name="sessions" EntityType="HELPSModel.session" />
+    <EntitySet Name="sessionsTypes" EntityType="HELPSModel.sessionsType" />
+    <EntitySet Name="student1" EntityType="HELPSModel.student1" />
+    <EntitySet Name="waitings" EntityType="HELPSModel.waiting" />
+    <EntitySet Name="workshop1" EntityType="HELPSModel.workshop1" />
+    <EntitySet Name="workShops_booking" EntityType="HELPSModel.workShops_booking" />
+    <EntitySet Name="workShops_waiting" EntityType="HELPSModel.workShops_waiting" />
+    <EntitySet Name="WorkShopSet1" EntityType="HELPSModel.WorkShopSet1" />
+    <FunctionImport Name="prcGetWorkshopWaitingList" ReturnType="Collection(HELPSModel.BasicWorkshopWaiting)">
+      <Parameter Name="workshopId" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="SessionType">
     <Property Type="Int32" Name="id" Nullable="false" />
@@ -360,6 +382,346 @@
     <Property Type="String" Name="last_name" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="email" Nullable="false" MaxLength="100" />
     <Property Type="Boolean" Name="inactive" Nullable="true" />
+    <Property Type="DateTime" Name="archived" Nullable="true" Precision="23" />
+  </ComplexType>
+  <EntityType Name="booking">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="studentID" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="sessionId" Type="Int32" Nullable="false" />
+    <Property Name="cancel" Type="Boolean" Nullable="false" />
+    <Property Name="assisstance" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="attended" Type="Int32" />
+    <Property Name="waitingID" Type="Int32" />
+    <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="creatorId" Type="Int32" Nullable="false" />
+    <Property Name="modified" Type="DateTime" Precision="3" />
+    <Property Name="modifierId" Type="Int32" />
+    <Property Name="archived" Type="DateTime" Precision="3" />
+    <Property Name="archiverID" Type="Int32" />
+    <Property Name="isgroup" Type="Int32" />
+    <Property Name="numpeople" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="lecturercomment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="learningissues" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="islocked" Type="Int32" />
+    <Property Name="assigntype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="assigntypeOther" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="subject" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="appointments" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="appointmentsOther" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="assisstanceText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="emailtemplate">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="body" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="stagingsubject" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="stagingbody" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="modified" Type="DateTime" Precision="3" />
+    <Property Name="ModifierID" Type="Int32" />
+    <Property Name="published" Type="DateTime" Precision="3" />
+    <Property Name="PublisherID" Type="Int32" />
+    <Property Name="isactived" Type="Int32" />
+    <Property Name="categoryID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="lecturer1">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="staffID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="first_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="last_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="creatorId" Type="Int32" Nullable="false" />
+    <Property Name="modified" Type="DateTime" Precision="3" />
+    <Property Name="modifierId" Type="Int32" />
+    <Property Name="archived" Type="DateTime" Precision="3" />
+    <Property Name="archiverID" Type="Int32" />
+    <Property Name="inactive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="appointment1">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="orderItem" Type="Int32" />
+    <Property Name="iscurrent" Type="Int32" />
+  </EntityType>
+  <EntityType Name="assignment1">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="orderItem" Type="Int32" />
+    <Property Name="iscurrent" Type="Int32" />
+  </EntityType>
+  <EntityType Name="campu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="campus" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="creatorID" Type="Int32" />
+    <Property Name="created" Type="DateTime" Precision="3" />
+    <Property Name="modifierID" Type="Int32" />
+    <Property Name="modified" Type="DateTime" Precision="3" />
+    <Property Name="archiverID" Type="Int32" />
+    <Property Name="archived" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="emailtemplatesCategory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="category" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="learningissue">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="issue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="researchonly" Type="Int32" />
+    <Property Name="orderitem" Type="Int32" />
+    <Property Name="iscurrent" Type="Int32" />
+  </EntityType>
+  <EntityType Name="message">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="path" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="filename" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="modifierID" Type="Int32" />
+    <Property Name="modified" Type="DateTime" Precision="3" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="cssID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isactive" Type="Int32" />
+  </EntityType>
+  <EntityType Name="program">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="days" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="numOfWeeks" Type="Int32" />
+    <Property Name="startDate" Type="DateTime" Precision="0" />
+    <Property Name="endDate" Type="DateTime" Precision="0" />
+    <Property Name="maximum" Type="Int32" />
+    <Property Name="cutoff" Type="Int32" />
+    <Property Name="created" Type="DateTime" Precision="3" />
+    <Property Name="creatorId" Type="Int32" />
+    <Property Name="modified" Type="DateTime" Precision="3" />
+    <Property Name="modifierId" Type="Int32" />
+    <Property Name="archived" Type="DateTime" Precision="3" />
+    <Property Name="archiverId" Type="Int32" />
+    <Property Name="reminder_num" Type="Int32" />
+    <Property Name="reminder_sent" Type="Int32" />
+  </EntityType>
+  <EntityType Name="sessionDocument">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sessionID" Type="Int32" />
+    <Property Name="studentID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="filename" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CreatorId" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="archived" Type="Int32" />
+  </EntityType>
+  <EntityType Name="session">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="starting" />
+      <PropertyRef Name="ending" />
+      <PropertyRef Name="campus" />
+      <PropertyRef Name="lecturer" />
+      <PropertyRef Name="type" />
+      <PropertyRef Name="created" />
+      <PropertyRef Name="creatorId" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="starting" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ending" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="campus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="lecturer" Type="Int32" Nullable="false" />
+    <Property Name="type" Type="Int32" Nullable="false" />
+    <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="creatorId" Type="Int32" Nullable="false" />
+    <Property Name="modified" Type="DateTime" Precision="3" />
+    <Property Name="modifierId" Type="Int32" />
+    <Property Name="archived" Type="DateTime" Precision="3" />
+    <Property Name="archiverID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="sessionsType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="abbName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="iscurrent" Type="Boolean" />
+    <Property Name="fullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="student1">
+    <Key>
+      <PropertyRef Name="studentID" />
+      <PropertyRef Name="degree" />
+      <PropertyRef Name="status" />
+      <PropertyRef Name="first_language" />
+      <PropertyRef Name="country_origin" />
+    </Key>
+    <Property Name="studentID" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="dob" Type="DateTime" Precision="3" />
+    <Property Name="gender" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="degree" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="status" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="first_language" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="country_origin" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="background" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HSC" Type="Boolean" />
+    <Property Name="HSC_mark" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="IELTS" Type="Boolean" />
+    <Property Name="IELTS_mark" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="TOEFL" Type="Boolean" />
+    <Property Name="TOEFL_mark" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="TAFE" Type="Boolean" />
+    <Property Name="TAFE_mark" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="CULT" Type="Boolean" />
+    <Property Name="CULT_mark" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="InsearchDEEP" Type="Boolean" />
+    <Property Name="InsearchDEEP_mark" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="InsearchDiploma" Type="Boolean" />
+    <Property Name="InsearchDiploma_mark" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="foundationcourse" Type="Boolean" />
+    <Property Name="foundationcourse_mark" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="created" Type="DateTime" Precision="3" />
+    <Property Name="creatorID" Type="Int32" />
+    <Property Name="modified" Type="DateTime" Precision="3" />
+    <Property Name="modifierID" Type="Int32" />
+    <Property Name="archived" Type="DateTime" Precision="3" />
+    <Property Name="archiverID" Type="Int32" />
+    <Property Name="degree_details" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="alternative_contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="caf" Type="Boolean" />
+    <Property Name="batch" Type="Boolean" />
+    <Property Name="preferred_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="waiting">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="studentID" />
+      <PropertyRef Name="sessionId" />
+      <PropertyRef Name="priority" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="studentID" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="sessionId" Type="Int32" Nullable="false" />
+    <Property Name="assisstance" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="priority" Type="Int32" Nullable="false" />
+    <Property Name="created" Type="DateTime" Precision="3" />
+    <Property Name="creatorId" Type="Int32" />
+    <Property Name="modified" Type="DateTime" Precision="3" />
+    <Property Name="modifierId" Type="Int32" />
+    <Property Name="archived" Type="DateTime" Precision="3" />
+    <Property Name="archiverID" Type="Int32" />
+    <Property Name="isgroup" Type="Int32" />
+    <Property Name="numpeople" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="assigntype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="assigntypeOther" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="subject" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="appointments" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="appointmentsOther" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="assisstanceText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="workshop1">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="topic" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="targetingGroup" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="campusID" Type="Int32" />
+    <Property Name="starting" Type="DateTime" Precision="3" />
+    <Property Name="ending" Type="DateTime" Precision="3" />
+    <Property Name="maximum" Type="Int32" />
+    <Property Name="cutoff" Type="Int32" />
+    <Property Name="creatorID" Type="Int32" />
+    <Property Name="created" Type="DateTime" Precision="3" />
+    <Property Name="modifierID" Type="Int32" />
+    <Property Name="modified" Type="DateTime" Precision="3" />
+    <Property Name="archiverID" Type="Int32" />
+    <Property Name="archived" Type="DateTime" Precision="3" />
+    <Property Name="WorkShopSetID" Type="Int32" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="reminder_num" Type="Int32" />
+    <Property Name="reminder_sent" Type="Int32" />
+  </EntityType>
+  <EntityType Name="workShops_booking">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="workshopID" Type="Int32" />
+    <Property Name="studentID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="created" Type="DateTime" Precision="3" />
+    <Property Name="creatorID" Type="Int32" />
+    <Property Name="modified" Type="DateTime" Precision="3" />
+    <Property Name="modifierID" Type="Int32" />
+    <Property Name="archived" Type="DateTime" Precision="3" />
+    <Property Name="archiverID" Type="Int32" />
+    <Property Name="canceled" Type="Int32" />
+    <Property Name="attended" Type="Int32" />
+    <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="workShops_waiting">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="workshopID" Type="Int32" />
+    <Property Name="studentID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="priority" Type="Int32" />
+    <Property Name="created" Type="DateTime" Precision="3" />
+    <Property Name="creatorID" Type="Int32" />
+    <Property Name="modified" Type="DateTime" Precision="3" />
+    <Property Name="modifierID" Type="Int32" />
+    <Property Name="archived" Type="DateTime" Precision="3" />
+    <Property Name="archiverID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="WorkShopSet1">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="created" Type="DateTime" Precision="3" />
+    <Property Name="creatorID" Type="Int32" />
+    <Property Name="archived" Type="DateTime" Precision="3" />
+    <Property Name="archiverID" Type="Int32" />
+    <Property Name="modified" Type="DateTime" Precision="3" />
+    <Property Name="modifierID" Type="Int32" />
+    <Property Name="isActived" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="prcGetWorkshopWaitingList_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="workshopID" Nullable="true" />
+    <Property Type="String" Name="studentID" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="priority" Nullable="true" />
     <Property Type="DateTime" Name="archived" Nullable="true" Precision="23" />
   </ComplexType>
 </Schema>

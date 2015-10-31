@@ -10,21 +10,13 @@
 namespace UTS.HELPS.WebServices.DataAccess
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class workShops_booking
+    public partial class prcGetWorkshopWaitingList_Result
     {
         public int id { get; set; }
         public Nullable<int> workshopID { get; set; }
         public string studentID { get; set; }
-        public Nullable<System.DateTime> created { get; set; }
-        public Nullable<int> creatorID { get; set; }
-        public Nullable<System.DateTime> modified { get; set; }
-        public Nullable<int> modifierID { get; set; }
+        public Nullable<int> priority { get; set; }
         public Nullable<System.DateTime> archived { get; set; }
-        public Nullable<int> archiverID { get; set; }
-        public Nullable<int> canceled { get; set; }
-        public Nullable<int> attended { get; set; }
-        public string notes { get; set; }
     }
 }

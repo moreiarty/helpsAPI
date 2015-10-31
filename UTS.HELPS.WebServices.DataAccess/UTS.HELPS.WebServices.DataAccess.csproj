@@ -53,7 +53,13 @@
     <Compile Include="Appointment.cs">
       <DependentUpon>HELPSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="appointment1.cs">
+      <DependentUpon>HELPSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Assignment.cs">
+      <DependentUpon>HELPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="assignment1.cs">
       <DependentUpon>HELPSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="BasicSession.cs">
@@ -71,7 +77,19 @@
     <Compile Include="BasicWorkshopWaiting.cs">
       <DependentUpon>HELPSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="booking.cs">
+      <DependentUpon>HELPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="campu.cs">
+      <DependentUpon>HELPSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Campus.cs">
+      <DependentUpon>HELPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="emailtemplate.cs">
+      <DependentUpon>HELPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="emailtemplatesCategory.cs">
       <DependentUpon>HELPSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="HELPSModel.Context.cs">
@@ -89,23 +107,56 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HELPSModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="learningissue.cs">
+      <DependentUpon>HELPSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Lecturer.cs">
       <DependentUpon>HELPSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="lecturer1.cs">
+      <DependentUpon>HELPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="message.cs">
+      <DependentUpon>HELPSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="MiscDb.cs" />
+    <Compile Include="prcGetWorkshopWaitingList_Result.cs">
+      <DependentUpon>HELPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="program.cs">
+      <DependentUpon>HELPSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="session.cs">
+      <DependentUpon>HELPSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SessionBooking.cs">
       <DependentUpon>HELPSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SessionDb.cs" />
+    <Compile Include="sessionDocument.cs">
+      <DependentUpon>HELPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sessionsType.cs">
+      <DependentUpon>HELPSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SessionType.cs">
       <DependentUpon>HELPSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Student.cs">
       <DependentUpon>HELPSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="student1.cs">
+      <DependentUpon>HELPSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="StudentDb.cs" />
+    <Compile Include="waiting.cs">
+      <DependentUpon>HELPSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Workshop.cs">
+      <DependentUpon>HELPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="workshop1.cs">
       <DependentUpon>HELPSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="WorkshopBooking.cs">
@@ -113,6 +164,15 @@
     </Compile>
     <Compile Include="WorkshopDb.cs" />
     <Compile Include="WorkShopSet.cs">
+      <DependentUpon>HELPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkShopSet1.cs">
+      <DependentUpon>HELPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="workShops_booking.cs">
+      <DependentUpon>HELPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="workShops_waiting.cs">
       <DependentUpon>HELPSModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>

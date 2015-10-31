@@ -1,5 +1,376 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="HELPSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="HELPSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.appointments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="appointments">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="type" Type="varchar" MaxLength="50" />
+    <Property Name="orderItem" Type="int" />
+    <Property Name="iscurrent" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.assignments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="assignments">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" />
+    <Property Name="orderItem" Type="int" />
+    <Property Name="iscurrent" Type="int" />
+  </EntityType>
+  <EntityType Name="bookings">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="studentID" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="sessionId" Type="int" Nullable="false" />
+    <Property Name="cancel" Type="bit" Nullable="false" />
+    <Property Name="assisstance" Type="char" MaxLength="20" />
+    <Property Name="reason" Type="ntext" />
+    <Property Name="attended" Type="int" />
+    <Property Name="waitingID" Type="int" />
+    <Property Name="created" Type="datetime" Nullable="false" />
+    <Property Name="creatorId" Type="int" Nullable="false" />
+    <Property Name="modified" Type="datetime" />
+    <Property Name="modifierId" Type="int" />
+    <Property Name="archived" Type="datetime" />
+    <Property Name="archiverID" Type="int" />
+    <Property Name="isgroup" Type="int" />
+    <Property Name="numpeople" Type="char" MaxLength="10" />
+    <Property Name="lecturercomment" Type="ntext" />
+    <Property Name="learningissues" Type="nvarchar" MaxLength="50" />
+    <Property Name="islocked" Type="int" />
+    <Property Name="assigntype" Type="nvarchar" MaxLength="50" />
+    <Property Name="assigntypeOther" Type="nvarchar" MaxLength="50" />
+    <Property Name="subject" Type="nvarchar" MaxLength="100" />
+    <Property Name="appointments" Type="nvarchar" MaxLength="50" />
+    <Property Name="appointmentsOther" Type="nvarchar" MaxLength="50" />
+    <Property Name="assisstanceText" Type="ntext" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.campus' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="campus">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="campus" Type="varchar" MaxLength="25" />
+    <Property Name="creatorID" Type="int" />
+    <Property Name="created" Type="datetime" />
+    <Property Name="modifierID" Type="int" />
+    <Property Name="modified" Type="datetime" />
+    <Property Name="archiverID" Type="int" />
+    <Property Name="archived" Type="datetime" />
+  </EntityType>
+  <EntityType Name="emailtemplates">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="subject" Type="text" />
+    <Property Name="body" Type="text" />
+    <Property Name="stagingsubject" Type="text" />
+    <Property Name="stagingbody" Type="text" />
+    <Property Name="description" Type="text" />
+    <Property Name="modified" Type="datetime" />
+    <Property Name="ModifierID" Type="int" />
+    <Property Name="published" Type="datetime" />
+    <Property Name="PublisherID" Type="int" />
+    <Property Name="isactived" Type="int" />
+    <Property Name="categoryID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.emailtemplatesCategory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="emailtemplatesCategory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="category" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.learningissues' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="learningissues">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="issue" Type="nvarchar" MaxLength="50" />
+    <Property Name="researchonly" Type="int" />
+    <Property Name="orderitem" Type="int" />
+    <Property Name="iscurrent" Type="int" />
+  </EntityType>
+  <EntityType Name="lecturers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="staffID" Type="char" MaxLength="10" />
+    <Property Name="first_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="last_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="created" Type="datetime" Nullable="false" />
+    <Property Name="creatorId" Type="int" Nullable="false" />
+    <Property Name="modified" Type="datetime" />
+    <Property Name="modifierId" Type="int" />
+    <Property Name="archived" Type="datetime" />
+    <Property Name="archiverID" Type="int" />
+    <Property Name="inactive" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.messages' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="messages">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="path" Type="varchar" MaxLength="100" />
+    <Property Name="filename" Type="varchar" MaxLength="50" />
+    <Property Name="modifierID" Type="int" />
+    <Property Name="modified" Type="datetime" />
+    <Property Name="description" Type="varchar" MaxLength="255" />
+    <Property Name="text" Type="ntext" />
+    <Property Name="cssID" Type="varchar" MaxLength="50" />
+    <Property Name="isactive" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.programs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="programs">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="250" />
+    <Property Name="days" Type="nvarchar" MaxLength="50" />
+    <Property Name="numOfWeeks" Type="int" />
+    <Property Name="startDate" Type="date" />
+    <Property Name="endDate" Type="date" />
+    <Property Name="maximum" Type="int" />
+    <Property Name="cutoff" Type="int" />
+    <Property Name="created" Type="datetime" />
+    <Property Name="creatorId" Type="int" />
+    <Property Name="modified" Type="datetime" />
+    <Property Name="modifierId" Type="int" />
+    <Property Name="archived" Type="datetime" />
+    <Property Name="archiverId" Type="int" />
+    <Property Name="reminder_num" Type="int" />
+    <Property Name="reminder_sent" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'elssa_booking.dbo.programWorkshops' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="programWorkshops">
+          <Property Name="programId" Type="int" />
+          <Property Name="workshopId" Type="int" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.sessionDocuments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="sessionDocuments">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sessionID" Type="int" />
+    <Property Name="studentID" Type="char" MaxLength="10" />
+    <Property Name="filename" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatorId" Type="char" MaxLength="10" />
+    <Property Name="archived" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.sessions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="sessions">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="starting" />
+      <PropertyRef Name="ending" />
+      <PropertyRef Name="campus" />
+      <PropertyRef Name="lecturer" />
+      <PropertyRef Name="type" />
+      <PropertyRef Name="created" />
+      <PropertyRef Name="creatorId" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="starting" Type="datetime" Nullable="false" />
+    <Property Name="ending" Type="datetime" Nullable="false" />
+    <Property Name="campus" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="lecturer" Type="int" Nullable="false" />
+    <Property Name="type" Type="int" Nullable="false" />
+    <Property Name="created" Type="datetime" Nullable="false" />
+    <Property Name="creatorId" Type="int" Nullable="false" />
+    <Property Name="modified" Type="datetime" />
+    <Property Name="modifierId" Type="int" />
+    <Property Name="archived" Type="datetime" />
+    <Property Name="archiverID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.sessionsType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="sessionsType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="abbName" Type="varchar" MaxLength="25" />
+    <Property Name="iscurrent" Type="bit" />
+    <Property Name="fullName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.students' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="students">
+    <Key>
+      <PropertyRef Name="studentID" />
+      <PropertyRef Name="degree" />
+      <PropertyRef Name="status" />
+      <PropertyRef Name="first_language" />
+      <PropertyRef Name="country_origin" />
+    </Key>
+    <Property Name="studentID" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="dob" Type="datetime" />
+    <Property Name="gender" Type="char" MaxLength="5" />
+    <Property Name="degree" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="status" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="first_language" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="country_origin" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="background" Type="ntext" />
+    <Property Name="HSC" Type="bit" />
+    <Property Name="HSC_mark" Type="char" MaxLength="20" />
+    <Property Name="IELTS" Type="bit" />
+    <Property Name="IELTS_mark" Type="char" MaxLength="20" />
+    <Property Name="TOEFL" Type="bit" />
+    <Property Name="TOEFL_mark" Type="char" MaxLength="20" />
+    <Property Name="TAFE" Type="bit" />
+    <Property Name="TAFE_mark" Type="char" MaxLength="20" />
+    <Property Name="CULT" Type="bit" />
+    <Property Name="CULT_mark" Type="char" MaxLength="20" />
+    <Property Name="InsearchDEEP" Type="bit" />
+    <Property Name="InsearchDEEP_mark" Type="char" MaxLength="20" />
+    <Property Name="InsearchDiploma" Type="bit" />
+    <Property Name="InsearchDiploma_mark" Type="char" MaxLength="20" />
+    <Property Name="foundationcourse" Type="bit" />
+    <Property Name="foundationcourse_mark" Type="char" MaxLength="20" />
+    <Property Name="created" Type="datetime" />
+    <Property Name="creatorID" Type="int" />
+    <Property Name="modified" Type="datetime" />
+    <Property Name="modifierID" Type="int" />
+    <Property Name="archived" Type="datetime" />
+    <Property Name="archiverID" Type="int" />
+    <Property Name="degree_details" Type="char" MaxLength="50" />
+    <Property Name="alternative_contact" Type="text" />
+    <Property Name="caf" Type="bit" />
+    <Property Name="batch" Type="bit" />
+    <Property Name="preferred_name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.waitings' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="waitings">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="studentID" />
+      <PropertyRef Name="sessionId" />
+      <PropertyRef Name="priority" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="studentID" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="sessionId" Type="int" Nullable="false" />
+    <Property Name="assisstance" Type="char" MaxLength="20" />
+    <Property Name="reason" Type="ntext" />
+    <Property Name="priority" Type="int" Nullable="false" />
+    <Property Name="created" Type="datetime" />
+    <Property Name="creatorId" Type="int" />
+    <Property Name="modified" Type="datetime" />
+    <Property Name="modifierId" Type="int" />
+    <Property Name="archived" Type="datetime" />
+    <Property Name="archiverID" Type="int" />
+    <Property Name="isgroup" Type="int" />
+    <Property Name="numpeople" Type="char" MaxLength="10" />
+    <Property Name="assigntype" Type="nvarchar" MaxLength="50" />
+    <Property Name="assigntypeOther" Type="nvarchar" MaxLength="50" />
+    <Property Name="subject" Type="nvarchar" MaxLength="100" />
+    <Property Name="appointments" Type="nvarchar" MaxLength="50" />
+    <Property Name="appointmentsOther" Type="nvarchar" MaxLength="50" />
+    <Property Name="assisstanceText" Type="ntext" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.workshops' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="workshops">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="topic" Type="varchar" MaxLength="255" />
+    <Property Name="description" Type="ntext" />
+    <Property Name="targetingGroup" Type="ntext" />
+    <Property Name="campusID" Type="int" />
+    <Property Name="starting" Type="datetime" />
+    <Property Name="ending" Type="datetime" />
+    <Property Name="maximum" Type="int" />
+    <Property Name="cutoff" Type="int" />
+    <Property Name="creatorID" Type="int" />
+    <Property Name="created" Type="datetime" />
+    <Property Name="modifierID" Type="int" />
+    <Property Name="modified" Type="datetime" />
+    <Property Name="archiverID" Type="int" />
+    <Property Name="archived" Type="datetime" />
+    <Property Name="WorkShopSetID" Type="int" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" />
+    <Property Name="reminder_num" Type="int" />
+    <Property Name="reminder_sent" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.workShops_booking' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="workShops_booking">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="workshopID" Type="int" />
+    <Property Name="studentID" Type="char" MaxLength="10" />
+    <Property Name="created" Type="datetime" />
+    <Property Name="creatorID" Type="int" />
+    <Property Name="modified" Type="datetime" />
+    <Property Name="modifierID" Type="int" />
+    <Property Name="archived" Type="datetime" />
+    <Property Name="archiverID" Type="int" />
+    <Property Name="canceled" Type="int" />
+    <Property Name="attended" Type="int" />
+    <Property Name="notes" Type="ntext" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.workShops_waiting' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="workShops_waiting">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="workshopID" Type="int" />
+    <Property Name="studentID" Type="char" MaxLength="10" />
+    <Property Name="priority" Type="int" />
+    <Property Name="created" Type="datetime" />
+    <Property Name="creatorID" Type="int" />
+    <Property Name="modified" Type="datetime" />
+    <Property Name="modifierID" Type="int" />
+    <Property Name="archived" Type="datetime" />
+    <Property Name="archiverID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.WorkShopSet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="WorkShopSet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+    <Property Name="created" Type="datetime" />
+    <Property Name="creatorID" Type="int" />
+    <Property Name="archived" Type="datetime" />
+    <Property Name="archiverID" Type="int" />
+    <Property Name="modified" Type="datetime" />
+    <Property Name="modifierID" Type="int" />
+    <Property Name="isActived" Type="int" />
+  </EntityType>
   <Function Name="prcCancelWorkshopBooking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="workshopId" Type="int" Mode="In" />
     <Parameter Name="studentId" Type="char" Mode="In" />
@@ -72,6 +443,9 @@
   <Function Name="prcGetWorkshopWaiting" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="workshopId" Type="int" Mode="In" />
     <Parameter Name="studentId" Type="char" Mode="In" />
+  </Function>
+  <Function Name="prcGetWorkshopWaitingList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="workshopId" Type="int" Mode="In" />
   </Function>
   <Function Name="prcListAppointments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="active" Type="bit" Mode="In" />
@@ -154,7 +528,7 @@
     <Parameter Name="canceled" Type="int" Mode="In" />
     <Parameter Name="attended" Type="int" Mode="In" />
     <Parameter Name="userId" Type="int" Mode="In" />
-    <Parameter Name="notes" Type="ntext" Mode="In" />
+    <Parameter Name="notes" Type="nvarchar(max)" Mode="In" />
   </Function>
   <Function Name="ufnGetBookingCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
     <Parameter Name="workshopId" Type="int" Mode="In" />
@@ -168,5 +542,248 @@
   <Function Name="ufnGetWorkshopCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
     <Parameter Name="workshopId" Type="int" Mode="In" />
   </Function>
-  <EntityContainer Name="HELPSModelStoreContainer" />
+  <EntityContainer Name="HELPSModelStoreContainer">
+    <EntitySet Name="bookings" EntityType="Self.bookings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="emailtemplates" EntityType="Self.emailtemplates" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="lecturers" EntityType="Self.lecturers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="appointments" EntityType="Self.appointments" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [appointments].[id] AS [id], 
+    [appointments].[type] AS [type], 
+    [appointments].[orderItem] AS [orderItem], 
+    [appointments].[iscurrent] AS [iscurrent]
+    FROM [dbo].[appointments] AS [appointments]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="assignments" EntityType="Self.assignments" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [assignments].[id] AS [id], 
+    [assignments].[type] AS [type], 
+    [assignments].[orderItem] AS [orderItem], 
+    [assignments].[iscurrent] AS [iscurrent]
+    FROM [dbo].[assignments] AS [assignments]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="campus" EntityType="Self.campus" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [campus].[id] AS [id], 
+    [campus].[campus] AS [campus], 
+    [campus].[creatorID] AS [creatorID], 
+    [campus].[created] AS [created], 
+    [campus].[modifierID] AS [modifierID], 
+    [campus].[modified] AS [modified], 
+    [campus].[archiverID] AS [archiverID], 
+    [campus].[archived] AS [archived]
+    FROM [dbo].[campus] AS [campus]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="emailtemplatesCategory" EntityType="Self.emailtemplatesCategory" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [emailtemplatesCategory].[id] AS [id], 
+    [emailtemplatesCategory].[category] AS [category]
+    FROM [dbo].[emailtemplatesCategory] AS [emailtemplatesCategory]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="learningissues" EntityType="Self.learningissues" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [learningissues].[id] AS [id], 
+    [learningissues].[issue] AS [issue], 
+    [learningissues].[researchonly] AS [researchonly], 
+    [learningissues].[orderitem] AS [orderitem], 
+    [learningissues].[iscurrent] AS [iscurrent]
+    FROM [dbo].[learningissues] AS [learningissues]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="messages" EntityType="Self.messages" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [messages].[id] AS [id], 
+    [messages].[path] AS [path], 
+    [messages].[filename] AS [filename], 
+    [messages].[modifierID] AS [modifierID], 
+    [messages].[modified] AS [modified], 
+    [messages].[description] AS [description], 
+    [messages].[text] AS [text], 
+    [messages].[cssID] AS [cssID], 
+    [messages].[isactive] AS [isactive]
+    FROM [dbo].[messages] AS [messages]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="programs" EntityType="Self.programs" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [programs].[id] AS [id], 
+    [programs].[name] AS [name], 
+    [programs].[days] AS [days], 
+    [programs].[numOfWeeks] AS [numOfWeeks], 
+    [programs].[startDate] AS [startDate], 
+    [programs].[endDate] AS [endDate], 
+    [programs].[maximum] AS [maximum], 
+    [programs].[cutoff] AS [cutoff], 
+    [programs].[created] AS [created], 
+    [programs].[creatorId] AS [creatorId], 
+    [programs].[modified] AS [modified], 
+    [programs].[modifierId] AS [modifierId], 
+    [programs].[archived] AS [archived], 
+    [programs].[archiverId] AS [archiverId], 
+    [programs].[reminder_num] AS [reminder_num], 
+    [programs].[reminder_sent] AS [reminder_sent]
+    FROM [dbo].[programs] AS [programs]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="sessionDocuments" EntityType="Self.sessionDocuments" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [sessionDocuments].[id] AS [id], 
+    [sessionDocuments].[sessionID] AS [sessionID], 
+    [sessionDocuments].[studentID] AS [studentID], 
+    [sessionDocuments].[filename] AS [filename], 
+    [sessionDocuments].[CreatorId] AS [CreatorId], 
+    [sessionDocuments].[archived] AS [archived]
+    FROM [dbo].[sessionDocuments] AS [sessionDocuments]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="sessions" EntityType="Self.sessions" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [sessions].[id] AS [id], 
+    [sessions].[starting] AS [starting], 
+    [sessions].[ending] AS [ending], 
+    [sessions].[campus] AS [campus], 
+    [sessions].[lecturer] AS [lecturer], 
+    [sessions].[type] AS [type], 
+    [sessions].[created] AS [created], 
+    [sessions].[creatorId] AS [creatorId], 
+    [sessions].[modified] AS [modified], 
+    [sessions].[modifierId] AS [modifierId], 
+    [sessions].[archived] AS [archived], 
+    [sessions].[archiverID] AS [archiverID]
+    FROM [dbo].[sessions] AS [sessions]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="sessionsType" EntityType="Self.sessionsType" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [sessionsType].[id] AS [id], 
+    [sessionsType].[abbName] AS [abbName], 
+    [sessionsType].[iscurrent] AS [iscurrent], 
+    [sessionsType].[fullName] AS [fullName]
+    FROM [dbo].[sessionsType] AS [sessionsType]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="students" EntityType="Self.students" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [students].[studentID] AS [studentID], 
+    [students].[dob] AS [dob], 
+    [students].[gender] AS [gender], 
+    [students].[degree] AS [degree], 
+    [students].[status] AS [status], 
+    [students].[first_language] AS [first_language], 
+    [students].[country_origin] AS [country_origin], 
+    [students].[background] AS [background], 
+    [students].[HSC] AS [HSC], 
+    [students].[HSC_mark] AS [HSC_mark], 
+    [students].[IELTS] AS [IELTS], 
+    [students].[IELTS_mark] AS [IELTS_mark], 
+    [students].[TOEFL] AS [TOEFL], 
+    [students].[TOEFL_mark] AS [TOEFL_mark], 
+    [students].[TAFE] AS [TAFE], 
+    [students].[TAFE_mark] AS [TAFE_mark], 
+    [students].[CULT] AS [CULT], 
+    [students].[CULT_mark] AS [CULT_mark], 
+    [students].[InsearchDEEP] AS [InsearchDEEP], 
+    [students].[InsearchDEEP_mark] AS [InsearchDEEP_mark], 
+    [students].[InsearchDiploma] AS [InsearchDiploma], 
+    [students].[InsearchDiploma_mark] AS [InsearchDiploma_mark], 
+    [students].[foundationcourse] AS [foundationcourse], 
+    [students].[foundationcourse_mark] AS [foundationcourse_mark], 
+    [students].[created] AS [created], 
+    [students].[creatorID] AS [creatorID], 
+    [students].[modified] AS [modified], 
+    [students].[modifierID] AS [modifierID], 
+    [students].[archived] AS [archived], 
+    [students].[archiverID] AS [archiverID], 
+    [students].[degree_details] AS [degree_details], 
+    [students].[alternative_contact] AS [alternative_contact], 
+    [students].[caf] AS [caf], 
+    [students].[batch] AS [batch], 
+    [students].[preferred_name] AS [preferred_name]
+    FROM [dbo].[students] AS [students]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="waitings" EntityType="Self.waitings" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [waitings].[id] AS [id], 
+    [waitings].[studentID] AS [studentID], 
+    [waitings].[sessionId] AS [sessionId], 
+    [waitings].[assisstance] AS [assisstance], 
+    [waitings].[reason] AS [reason], 
+    [waitings].[priority] AS [priority], 
+    [waitings].[created] AS [created], 
+    [waitings].[creatorId] AS [creatorId], 
+    [waitings].[modified] AS [modified], 
+    [waitings].[modifierId] AS [modifierId], 
+    [waitings].[archived] AS [archived], 
+    [waitings].[archiverID] AS [archiverID], 
+    [waitings].[isgroup] AS [isgroup], 
+    [waitings].[numpeople] AS [numpeople], 
+    [waitings].[assigntype] AS [assigntype], 
+    [waitings].[assigntypeOther] AS [assigntypeOther], 
+    [waitings].[subject] AS [subject], 
+    [waitings].[appointments] AS [appointments], 
+    [waitings].[appointmentsOther] AS [appointmentsOther], 
+    [waitings].[assisstanceText] AS [assisstanceText]
+    FROM [dbo].[waitings] AS [waitings]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="workshops" EntityType="Self.workshops" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [workshops].[id] AS [id], 
+    [workshops].[topic] AS [topic], 
+    [workshops].[description] AS [description], 
+    [workshops].[targetingGroup] AS [targetingGroup], 
+    [workshops].[campusID] AS [campusID], 
+    [workshops].[starting] AS [starting], 
+    [workshops].[ending] AS [ending], 
+    [workshops].[maximum] AS [maximum], 
+    [workshops].[cutoff] AS [cutoff], 
+    [workshops].[creatorID] AS [creatorID], 
+    [workshops].[created] AS [created], 
+    [workshops].[modifierID] AS [modifierID], 
+    [workshops].[modified] AS [modified], 
+    [workshops].[archiverID] AS [archiverID], 
+    [workshops].[archived] AS [archived], 
+    [workshops].[WorkShopSetID] AS [WorkShopSetID], 
+    [workshops].[type] AS [type], 
+    [workshops].[reminder_num] AS [reminder_num], 
+    [workshops].[reminder_sent] AS [reminder_sent]
+    FROM [dbo].[workshops] AS [workshops]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="workShops_booking" EntityType="Self.workShops_booking" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [workShops_booking].[id] AS [id], 
+    [workShops_booking].[workshopID] AS [workshopID], 
+    [workShops_booking].[studentID] AS [studentID], 
+    [workShops_booking].[created] AS [created], 
+    [workShops_booking].[creatorID] AS [creatorID], 
+    [workShops_booking].[modified] AS [modified], 
+    [workShops_booking].[modifierID] AS [modifierID], 
+    [workShops_booking].[archived] AS [archived], 
+    [workShops_booking].[archiverID] AS [archiverID], 
+    [workShops_booking].[canceled] AS [canceled], 
+    [workShops_booking].[attended] AS [attended], 
+    [workShops_booking].[notes] AS [notes]
+    FROM [dbo].[workShops_booking] AS [workShops_booking]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="workShops_waiting" EntityType="Self.workShops_waiting" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [workShops_waiting].[id] AS [id], 
+    [workShops_waiting].[workshopID] AS [workshopID], 
+    [workShops_waiting].[studentID] AS [studentID], 
+    [workShops_waiting].[priority] AS [priority], 
+    [workShops_waiting].[created] AS [created], 
+    [workShops_waiting].[creatorID] AS [creatorID], 
+    [workShops_waiting].[modified] AS [modified], 
+    [workShops_waiting].[modifierID] AS [modifierID], 
+    [workShops_waiting].[archived] AS [archived], 
+    [workShops_waiting].[archiverID] AS [archiverID]
+    FROM [dbo].[workShops_waiting] AS [workShops_waiting]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="WorkShopSet" EntityType="Self.WorkShopSet" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [WorkShopSet].[id] AS [id], 
+    [WorkShopSet].[name] AS [name], 
+    [WorkShopSet].[created] AS [created], 
+    [WorkShopSet].[creatorID] AS [creatorID], 
+    [WorkShopSet].[archived] AS [archived], 
+    [WorkShopSet].[archiverID] AS [archiverID], 
+    [WorkShopSet].[modified] AS [modified], 
+    [WorkShopSet].[modifierID] AS [modifierID], 
+    [WorkShopSet].[isActived] AS [isActived]
+    FROM [dbo].[WorkShopSet] AS [WorkShopSet]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
 </Schema>

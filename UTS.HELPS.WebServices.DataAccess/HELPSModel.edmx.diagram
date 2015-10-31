@@ -4,7 +4,27 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a51ebaf4444d4b2085ee75c99112a331" Name="Diagram1" />
+      <Diagram DiagramId="a51ebaf4444d4b2085ee75c99112a331" Name="Diagram1" >
+        <EntityTypeShape EntityType="HELPSModel.booking" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="HELPSModel.emailtemplate" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="HELPSModel.lecturer1" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="HELPSModel.appointment1" Width="1.5" PointX="2.75" PointY="5.75" />
+        <EntityTypeShape EntityType="HELPSModel.assignment1" Width="1.5" PointX="4.75" PointY="5.75" />
+        <EntityTypeShape EntityType="HELPSModel.campu" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="HELPSModel.emailtemplatesCategory" Width="1.5" PointX="6.75" PointY="4.75" />
+        <EntityTypeShape EntityType="HELPSModel.learningissue" Width="1.5" PointX="6.75" PointY="7.75" />
+        <EntityTypeShape EntityType="HELPSModel.message" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="HELPSModel.program" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="HELPSModel.sessionDocument" Width="1.5" PointX="2.75" PointY="8.75" />
+        <EntityTypeShape EntityType="HELPSModel.session" Width="1.5" PointX="8.75" PointY="4.75" />
+        <EntityTypeShape EntityType="HELPSModel.sessionsType" Width="1.5" PointX="8.75" PointY="9.75" />
+        <EntityTypeShape EntityType="HELPSModel.student1" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="HELPSModel.waiting" Width="1.5" PointX="4.75" PointY="10.75" />
+        <EntityTypeShape EntityType="HELPSModel.workshop1" Width="1.5" PointX="10.75" PointY="9.75" />
+        <EntityTypeShape EntityType="HELPSModel.workShops_booking" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="HELPSModel.workShops_waiting" Width="1.5" PointX="12.75" PointY="5.75" />
+        <EntityTypeShape EntityType="HELPSModel.WorkShopSet1" Width="1.5" PointX="6.75" PointY="12.75" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

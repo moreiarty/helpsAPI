@@ -54,6 +54,14 @@ namespace UTS.HELPS.WebServices.DataAccess
             }
         }
 
+        public static List<BasicWorkshopWaiting> GetWorkshopWaitingList(int workshopId)
+        {
+            using (HELPSEntities ctx = new HELPSEntities())
+            {
+                return ctx.prcGetWorkshopWaitingList(workshopId).ToList();
+            }
+        }
+
         public static void CreateWorkshopBooking(int workshopId, string studentId, int userId)
         {
             using (HELPSEntities ctx = new HELPSEntities())

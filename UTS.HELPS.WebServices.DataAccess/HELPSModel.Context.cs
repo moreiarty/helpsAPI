@@ -27,6 +27,25 @@ namespace UTS.HELPS.WebServices.DataAccess
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<booking> bookings { get; set; }
+        public virtual DbSet<emailtemplate> emailtemplates { get; set; }
+        public virtual DbSet<lecturer1> lecturer1 { get; set; }
+        public virtual DbSet<appointment1> appointment1 { get; set; }
+        public virtual DbSet<assignment1> assignment1 { get; set; }
+        public virtual DbSet<campu> campus { get; set; }
+        public virtual DbSet<emailtemplatesCategory> emailtemplatesCategories { get; set; }
+        public virtual DbSet<learningissue> learningissues { get; set; }
+        public virtual DbSet<message> messages { get; set; }
+        public virtual DbSet<program> programs { get; set; }
+        public virtual DbSet<sessionDocument> sessionDocuments { get; set; }
+        public virtual DbSet<session> sessions { get; set; }
+        public virtual DbSet<sessionsType> sessionsTypes { get; set; }
+        public virtual DbSet<student1> student1 { get; set; }
+        public virtual DbSet<waiting> waitings { get; set; }
+        public virtual DbSet<workshop1> workshop1 { get; set; }
+        public virtual DbSet<workShops_booking> workShops_booking { get; set; }
+        public virtual DbSet<workShops_waiting> workShops_waiting { get; set; }
+        public virtual DbSet<WorkShopSet1> WorkShopSet1 { get; set; }
     
         public virtual int prcCreateStudent(string studentID, Nullable<System.DateTime> dob, string gender, string degree, string status, string first_language, string country_origin, string background, Nullable<bool> hSC, string hSC_mark, Nullable<bool> iELTS, string iELTS_mark, Nullable<bool> tOEFL, string tOEFL_mark, Nullable<bool> tAFE, string tAFE_mark, Nullable<bool> cULT, string cULT_mark, Nullable<bool> insearchDEEP, string insearchDEEP_mark, Nullable<bool> insearchDiploma, string insearchDiploma_mark, Nullable<bool> foundationcourse, string foundationcourse_mark, Nullable<int> creatorID, string degree_details, string alternative_contact, string preferred_name)
         {
@@ -581,6 +600,15 @@ namespace UTS.HELPS.WebServices.DataAccess
                 new ObjectParameter("programId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("prcGetProgramWorkshops", programIdParameter);
+        }
+    
+        public virtual ObjectResult<BasicWorkshopWaiting> prcGetWorkshopWaitingList(Nullable<int> workshopId)
+        {
+            var workshopIdParameter = workshopId.HasValue ?
+                new ObjectParameter("workshopId", workshopId) :
+                new ObjectParameter("workshopId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BasicWorkshopWaiting>("prcGetWorkshopWaitingList", workshopIdParameter);
         }
     }
 }

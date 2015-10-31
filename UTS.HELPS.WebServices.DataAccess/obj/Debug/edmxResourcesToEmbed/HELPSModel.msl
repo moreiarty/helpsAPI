@@ -294,5 +294,354 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="prcGetProgramWorkshops" FunctionName="HELPSModel.Store.prcGetProgramWorkshops" />
+    <EntitySetMapping Name="bookings">
+      <EntityTypeMapping TypeName="HELPSModel.booking">
+        <MappingFragment StoreEntitySet="bookings">
+          <ScalarProperty Name="assisstanceText" ColumnName="assisstanceText" />
+          <ScalarProperty Name="appointmentsOther" ColumnName="appointmentsOther" />
+          <ScalarProperty Name="appointments" ColumnName="appointments" />
+          <ScalarProperty Name="subject" ColumnName="subject" />
+          <ScalarProperty Name="assigntypeOther" ColumnName="assigntypeOther" />
+          <ScalarProperty Name="assigntype" ColumnName="assigntype" />
+          <ScalarProperty Name="islocked" ColumnName="islocked" />
+          <ScalarProperty Name="learningissues" ColumnName="learningissues" />
+          <ScalarProperty Name="lecturercomment" ColumnName="lecturercomment" />
+          <ScalarProperty Name="numpeople" ColumnName="numpeople" />
+          <ScalarProperty Name="isgroup" ColumnName="isgroup" />
+          <ScalarProperty Name="archiverID" ColumnName="archiverID" />
+          <ScalarProperty Name="archived" ColumnName="archived" />
+          <ScalarProperty Name="modifierId" ColumnName="modifierId" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="creatorId" ColumnName="creatorId" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="waitingID" ColumnName="waitingID" />
+          <ScalarProperty Name="attended" ColumnName="attended" />
+          <ScalarProperty Name="reason" ColumnName="reason" />
+          <ScalarProperty Name="assisstance" ColumnName="assisstance" />
+          <ScalarProperty Name="cancel" ColumnName="cancel" />
+          <ScalarProperty Name="sessionId" ColumnName="sessionId" />
+          <ScalarProperty Name="studentID" ColumnName="studentID" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="emailtemplates">
+      <EntityTypeMapping TypeName="HELPSModel.emailtemplate">
+        <MappingFragment StoreEntitySet="emailtemplates">
+          <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+          <ScalarProperty Name="isactived" ColumnName="isactived" />
+          <ScalarProperty Name="PublisherID" ColumnName="PublisherID" />
+          <ScalarProperty Name="published" ColumnName="published" />
+          <ScalarProperty Name="ModifierID" ColumnName="ModifierID" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="stagingbody" ColumnName="stagingbody" />
+          <ScalarProperty Name="stagingsubject" ColumnName="stagingsubject" />
+          <ScalarProperty Name="body" ColumnName="body" />
+          <ScalarProperty Name="subject" ColumnName="subject" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lecturer1">
+      <EntityTypeMapping TypeName="HELPSModel.lecturer1">
+        <MappingFragment StoreEntitySet="lecturers">
+          <ScalarProperty Name="inactive" ColumnName="inactive" />
+          <ScalarProperty Name="archiverID" ColumnName="archiverID" />
+          <ScalarProperty Name="archived" ColumnName="archived" />
+          <ScalarProperty Name="modifierId" ColumnName="modifierId" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="creatorId" ColumnName="creatorId" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="staffID" ColumnName="staffID" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="appointment1">
+      <EntityTypeMapping TypeName="HELPSModel.appointment1">
+        <MappingFragment StoreEntitySet="appointments">
+          <ScalarProperty Name="iscurrent" ColumnName="iscurrent" />
+          <ScalarProperty Name="orderItem" ColumnName="orderItem" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="assignment1">
+      <EntityTypeMapping TypeName="HELPSModel.assignment1">
+        <MappingFragment StoreEntitySet="assignments">
+          <ScalarProperty Name="iscurrent" ColumnName="iscurrent" />
+          <ScalarProperty Name="orderItem" ColumnName="orderItem" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="campus">
+      <EntityTypeMapping TypeName="HELPSModel.campu">
+        <MappingFragment StoreEntitySet="campus">
+          <ScalarProperty Name="archived" ColumnName="archived" />
+          <ScalarProperty Name="archiverID" ColumnName="archiverID" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="modifierID" ColumnName="modifierID" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="creatorID" ColumnName="creatorID" />
+          <ScalarProperty Name="campus" ColumnName="campus" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="emailtemplatesCategories">
+      <EntityTypeMapping TypeName="HELPSModel.emailtemplatesCategory">
+        <MappingFragment StoreEntitySet="emailtemplatesCategory">
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="learningissues">
+      <EntityTypeMapping TypeName="HELPSModel.learningissue">
+        <MappingFragment StoreEntitySet="learningissues">
+          <ScalarProperty Name="iscurrent" ColumnName="iscurrent" />
+          <ScalarProperty Name="orderitem" ColumnName="orderitem" />
+          <ScalarProperty Name="researchonly" ColumnName="researchonly" />
+          <ScalarProperty Name="issue" ColumnName="issue" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="messages">
+      <EntityTypeMapping TypeName="HELPSModel.message">
+        <MappingFragment StoreEntitySet="messages">
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="cssID" ColumnName="cssID" />
+          <ScalarProperty Name="text" ColumnName="text" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="modifierID" ColumnName="modifierID" />
+          <ScalarProperty Name="filename" ColumnName="filename" />
+          <ScalarProperty Name="path" ColumnName="path" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="programs">
+      <EntityTypeMapping TypeName="HELPSModel.program">
+        <MappingFragment StoreEntitySet="programs">
+          <ScalarProperty Name="reminder_sent" ColumnName="reminder_sent" />
+          <ScalarProperty Name="reminder_num" ColumnName="reminder_num" />
+          <ScalarProperty Name="archiverId" ColumnName="archiverId" />
+          <ScalarProperty Name="archived" ColumnName="archived" />
+          <ScalarProperty Name="modifierId" ColumnName="modifierId" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="creatorId" ColumnName="creatorId" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="cutoff" ColumnName="cutoff" />
+          <ScalarProperty Name="maximum" ColumnName="maximum" />
+          <ScalarProperty Name="endDate" ColumnName="endDate" />
+          <ScalarProperty Name="startDate" ColumnName="startDate" />
+          <ScalarProperty Name="numOfWeeks" ColumnName="numOfWeeks" />
+          <ScalarProperty Name="days" ColumnName="days" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sessionDocuments">
+      <EntityTypeMapping TypeName="HELPSModel.sessionDocument">
+        <MappingFragment StoreEntitySet="sessionDocuments">
+          <ScalarProperty Name="archived" ColumnName="archived" />
+          <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+          <ScalarProperty Name="filename" ColumnName="filename" />
+          <ScalarProperty Name="studentID" ColumnName="studentID" />
+          <ScalarProperty Name="sessionID" ColumnName="sessionID" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sessions">
+      <EntityTypeMapping TypeName="HELPSModel.session">
+        <MappingFragment StoreEntitySet="sessions">
+          <ScalarProperty Name="archiverID" ColumnName="archiverID" />
+          <ScalarProperty Name="archived" ColumnName="archived" />
+          <ScalarProperty Name="modifierId" ColumnName="modifierId" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="creatorId" ColumnName="creatorId" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="lecturer" ColumnName="lecturer" />
+          <ScalarProperty Name="campus" ColumnName="campus" />
+          <ScalarProperty Name="ending" ColumnName="ending" />
+          <ScalarProperty Name="starting" ColumnName="starting" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sessionsTypes">
+      <EntityTypeMapping TypeName="HELPSModel.sessionsType">
+        <MappingFragment StoreEntitySet="sessionsType">
+          <ScalarProperty Name="fullName" ColumnName="fullName" />
+          <ScalarProperty Name="iscurrent" ColumnName="iscurrent" />
+          <ScalarProperty Name="abbName" ColumnName="abbName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="student1">
+      <EntityTypeMapping TypeName="HELPSModel.student1">
+        <MappingFragment StoreEntitySet="students">
+          <ScalarProperty Name="preferred_name" ColumnName="preferred_name" />
+          <ScalarProperty Name="batch" ColumnName="batch" />
+          <ScalarProperty Name="caf" ColumnName="caf" />
+          <ScalarProperty Name="alternative_contact" ColumnName="alternative_contact" />
+          <ScalarProperty Name="degree_details" ColumnName="degree_details" />
+          <ScalarProperty Name="archiverID" ColumnName="archiverID" />
+          <ScalarProperty Name="archived" ColumnName="archived" />
+          <ScalarProperty Name="modifierID" ColumnName="modifierID" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="creatorID" ColumnName="creatorID" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="foundationcourse_mark" ColumnName="foundationcourse_mark" />
+          <ScalarProperty Name="foundationcourse" ColumnName="foundationcourse" />
+          <ScalarProperty Name="InsearchDiploma_mark" ColumnName="InsearchDiploma_mark" />
+          <ScalarProperty Name="InsearchDiploma" ColumnName="InsearchDiploma" />
+          <ScalarProperty Name="InsearchDEEP_mark" ColumnName="InsearchDEEP_mark" />
+          <ScalarProperty Name="InsearchDEEP" ColumnName="InsearchDEEP" />
+          <ScalarProperty Name="CULT_mark" ColumnName="CULT_mark" />
+          <ScalarProperty Name="CULT" ColumnName="CULT" />
+          <ScalarProperty Name="TAFE_mark" ColumnName="TAFE_mark" />
+          <ScalarProperty Name="TAFE" ColumnName="TAFE" />
+          <ScalarProperty Name="TOEFL_mark" ColumnName="TOEFL_mark" />
+          <ScalarProperty Name="TOEFL" ColumnName="TOEFL" />
+          <ScalarProperty Name="IELTS_mark" ColumnName="IELTS_mark" />
+          <ScalarProperty Name="IELTS" ColumnName="IELTS" />
+          <ScalarProperty Name="HSC_mark" ColumnName="HSC_mark" />
+          <ScalarProperty Name="HSC" ColumnName="HSC" />
+          <ScalarProperty Name="background" ColumnName="background" />
+          <ScalarProperty Name="country_origin" ColumnName="country_origin" />
+          <ScalarProperty Name="first_language" ColumnName="first_language" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="degree" ColumnName="degree" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="dob" ColumnName="dob" />
+          <ScalarProperty Name="studentID" ColumnName="studentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="waitings">
+      <EntityTypeMapping TypeName="HELPSModel.waiting">
+        <MappingFragment StoreEntitySet="waitings">
+          <ScalarProperty Name="assisstanceText" ColumnName="assisstanceText" />
+          <ScalarProperty Name="appointmentsOther" ColumnName="appointmentsOther" />
+          <ScalarProperty Name="appointments" ColumnName="appointments" />
+          <ScalarProperty Name="subject" ColumnName="subject" />
+          <ScalarProperty Name="assigntypeOther" ColumnName="assigntypeOther" />
+          <ScalarProperty Name="assigntype" ColumnName="assigntype" />
+          <ScalarProperty Name="numpeople" ColumnName="numpeople" />
+          <ScalarProperty Name="isgroup" ColumnName="isgroup" />
+          <ScalarProperty Name="archiverID" ColumnName="archiverID" />
+          <ScalarProperty Name="archived" ColumnName="archived" />
+          <ScalarProperty Name="modifierId" ColumnName="modifierId" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="creatorId" ColumnName="creatorId" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="priority" ColumnName="priority" />
+          <ScalarProperty Name="reason" ColumnName="reason" />
+          <ScalarProperty Name="assisstance" ColumnName="assisstance" />
+          <ScalarProperty Name="sessionId" ColumnName="sessionId" />
+          <ScalarProperty Name="studentID" ColumnName="studentID" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="workshop1">
+      <EntityTypeMapping TypeName="HELPSModel.workshop1">
+        <MappingFragment StoreEntitySet="workshops">
+          <ScalarProperty Name="reminder_sent" ColumnName="reminder_sent" />
+          <ScalarProperty Name="reminder_num" ColumnName="reminder_num" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="WorkShopSetID" ColumnName="WorkShopSetID" />
+          <ScalarProperty Name="archived" ColumnName="archived" />
+          <ScalarProperty Name="archiverID" ColumnName="archiverID" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="modifierID" ColumnName="modifierID" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="creatorID" ColumnName="creatorID" />
+          <ScalarProperty Name="cutoff" ColumnName="cutoff" />
+          <ScalarProperty Name="maximum" ColumnName="maximum" />
+          <ScalarProperty Name="ending" ColumnName="ending" />
+          <ScalarProperty Name="starting" ColumnName="starting" />
+          <ScalarProperty Name="campusID" ColumnName="campusID" />
+          <ScalarProperty Name="targetingGroup" ColumnName="targetingGroup" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="topic" ColumnName="topic" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="workShops_booking">
+      <EntityTypeMapping TypeName="HELPSModel.workShops_booking">
+        <MappingFragment StoreEntitySet="workShops_booking">
+          <ScalarProperty Name="notes" ColumnName="notes" />
+          <ScalarProperty Name="attended" ColumnName="attended" />
+          <ScalarProperty Name="canceled" ColumnName="canceled" />
+          <ScalarProperty Name="archiverID" ColumnName="archiverID" />
+          <ScalarProperty Name="archived" ColumnName="archived" />
+          <ScalarProperty Name="modifierID" ColumnName="modifierID" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="creatorID" ColumnName="creatorID" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="studentID" ColumnName="studentID" />
+          <ScalarProperty Name="workshopID" ColumnName="workshopID" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="workShops_waiting">
+      <EntityTypeMapping TypeName="HELPSModel.workShops_waiting">
+        <MappingFragment StoreEntitySet="workShops_waiting">
+          <ScalarProperty Name="archiverID" ColumnName="archiverID" />
+          <ScalarProperty Name="archived" ColumnName="archived" />
+          <ScalarProperty Name="modifierID" ColumnName="modifierID" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="creatorID" ColumnName="creatorID" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="priority" ColumnName="priority" />
+          <ScalarProperty Name="studentID" ColumnName="studentID" />
+          <ScalarProperty Name="workshopID" ColumnName="workshopID" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkShopSet1">
+      <EntityTypeMapping TypeName="HELPSModel.WorkShopSet1">
+        <MappingFragment StoreEntitySet="WorkShopSet">
+          <ScalarProperty Name="isActived" ColumnName="isActived" />
+          <ScalarProperty Name="modifierID" ColumnName="modifierID" />
+          <ScalarProperty Name="modified" ColumnName="modified" />
+          <ScalarProperty Name="archiverID" ColumnName="archiverID" />
+          <ScalarProperty Name="archived" ColumnName="archived" />
+          <ScalarProperty Name="creatorID" ColumnName="creatorID" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="prcGetWorkshopWaitingList" FunctionName="HELPSModel.Store.prcGetWorkshopWaitingList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HELPSModel.BasicWorkshopWaiting">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="workshopID" ColumnName="workshopID" />
+          <ScalarProperty Name="studentID" ColumnName="studentID" />
+          <ScalarProperty Name="priority" ColumnName="priority" />
+          <ScalarProperty Name="archived" ColumnName="archived" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

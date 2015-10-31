@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -175,6 +176,7 @@
     <Compile Include="Responses\Response.cs" />
     <Compile Include="Responses\SessionTypeListResponse.cs" />
     <Compile Include="Responses\WorkshopBookingListResponse.cs" />
+    <Compile Include="Responses\WaitListCountResponse.cs" />
     <Compile Include="Responses\WorkshopListResponse.cs" />
     <Compile Include="Responses\WorkshopResponse.cs" />
     <Compile Include="Responses\WorkShopSetListResponse.cs" />

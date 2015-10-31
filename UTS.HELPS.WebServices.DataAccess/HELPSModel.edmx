@@ -4,7 +4,378 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="HELPSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="HELPSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.appointments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="appointments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="orderItem" Type="int" />
+          <Property Name="iscurrent" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.assignments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="assignments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" />
+          <Property Name="orderItem" Type="int" />
+          <Property Name="iscurrent" Type="int" />
+        </EntityType>
+        <EntityType Name="bookings">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="studentID" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="sessionId" Type="int" Nullable="false" />
+          <Property Name="cancel" Type="bit" Nullable="false" />
+          <Property Name="assisstance" Type="char" MaxLength="20" />
+          <Property Name="reason" Type="ntext" />
+          <Property Name="attended" Type="int" />
+          <Property Name="waitingID" Type="int" />
+          <Property Name="created" Type="datetime" Nullable="false" />
+          <Property Name="creatorId" Type="int" Nullable="false" />
+          <Property Name="modified" Type="datetime" />
+          <Property Name="modifierId" Type="int" />
+          <Property Name="archived" Type="datetime" />
+          <Property Name="archiverID" Type="int" />
+          <Property Name="isgroup" Type="int" />
+          <Property Name="numpeople" Type="char" MaxLength="10" />
+          <Property Name="lecturercomment" Type="ntext" />
+          <Property Name="learningissues" Type="nvarchar" MaxLength="50" />
+          <Property Name="islocked" Type="int" />
+          <Property Name="assigntype" Type="nvarchar" MaxLength="50" />
+          <Property Name="assigntypeOther" Type="nvarchar" MaxLength="50" />
+          <Property Name="subject" Type="nvarchar" MaxLength="100" />
+          <Property Name="appointments" Type="nvarchar" MaxLength="50" />
+          <Property Name="appointmentsOther" Type="nvarchar" MaxLength="50" />
+          <Property Name="assisstanceText" Type="ntext" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.campus' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="campus">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="campus" Type="varchar" MaxLength="25" />
+          <Property Name="creatorID" Type="int" />
+          <Property Name="created" Type="datetime" />
+          <Property Name="modifierID" Type="int" />
+          <Property Name="modified" Type="datetime" />
+          <Property Name="archiverID" Type="int" />
+          <Property Name="archived" Type="datetime" />
+        </EntityType>
+        <EntityType Name="emailtemplates">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="subject" Type="text" />
+          <Property Name="body" Type="text" />
+          <Property Name="stagingsubject" Type="text" />
+          <Property Name="stagingbody" Type="text" />
+          <Property Name="description" Type="text" />
+          <Property Name="modified" Type="datetime" />
+          <Property Name="ModifierID" Type="int" />
+          <Property Name="published" Type="datetime" />
+          <Property Name="PublisherID" Type="int" />
+          <Property Name="isactived" Type="int" />
+          <Property Name="categoryID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.emailtemplatesCategory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="emailtemplatesCategory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="category" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.learningissues' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="learningissues">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="issue" Type="nvarchar" MaxLength="50" />
+          <Property Name="researchonly" Type="int" />
+          <Property Name="orderitem" Type="int" />
+          <Property Name="iscurrent" Type="int" />
+        </EntityType>
+        <EntityType Name="lecturers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="staffID" Type="char" MaxLength="10" />
+          <Property Name="first_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="last_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="created" Type="datetime" Nullable="false" />
+          <Property Name="creatorId" Type="int" Nullable="false" />
+          <Property Name="modified" Type="datetime" />
+          <Property Name="modifierId" Type="int" />
+          <Property Name="archived" Type="datetime" />
+          <Property Name="archiverID" Type="int" />
+          <Property Name="inactive" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.messages' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="messages">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="path" Type="varchar" MaxLength="100" />
+          <Property Name="filename" Type="varchar" MaxLength="50" />
+          <Property Name="modifierID" Type="int" />
+          <Property Name="modified" Type="datetime" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+          <Property Name="text" Type="ntext" />
+          <Property Name="cssID" Type="varchar" MaxLength="50" />
+          <Property Name="isactive" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.programs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="programs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="250" />
+          <Property Name="days" Type="nvarchar" MaxLength="50" />
+          <Property Name="numOfWeeks" Type="int" />
+          <Property Name="startDate" Type="date" />
+          <Property Name="endDate" Type="date" />
+          <Property Name="maximum" Type="int" />
+          <Property Name="cutoff" Type="int" />
+          <Property Name="created" Type="datetime" />
+          <Property Name="creatorId" Type="int" />
+          <Property Name="modified" Type="datetime" />
+          <Property Name="modifierId" Type="int" />
+          <Property Name="archived" Type="datetime" />
+          <Property Name="archiverId" Type="int" />
+          <Property Name="reminder_num" Type="int" />
+          <Property Name="reminder_sent" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'elssa_booking.dbo.programWorkshops' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="programWorkshops">
+          <Property Name="programId" Type="int" />
+          <Property Name="workshopId" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.sessionDocuments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sessionDocuments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sessionID" Type="int" />
+          <Property Name="studentID" Type="char" MaxLength="10" />
+          <Property Name="filename" Type="nvarchar" MaxLength="255" />
+          <Property Name="CreatorId" Type="char" MaxLength="10" />
+          <Property Name="archived" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.sessions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sessions">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="starting" />
+            <PropertyRef Name="ending" />
+            <PropertyRef Name="campus" />
+            <PropertyRef Name="lecturer" />
+            <PropertyRef Name="type" />
+            <PropertyRef Name="created" />
+            <PropertyRef Name="creatorId" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="starting" Type="datetime" Nullable="false" />
+          <Property Name="ending" Type="datetime" Nullable="false" />
+          <Property Name="campus" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="lecturer" Type="int" Nullable="false" />
+          <Property Name="type" Type="int" Nullable="false" />
+          <Property Name="created" Type="datetime" Nullable="false" />
+          <Property Name="creatorId" Type="int" Nullable="false" />
+          <Property Name="modified" Type="datetime" />
+          <Property Name="modifierId" Type="int" />
+          <Property Name="archived" Type="datetime" />
+          <Property Name="archiverID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.sessionsType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sessionsType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="abbName" Type="varchar" MaxLength="25" />
+          <Property Name="iscurrent" Type="bit" />
+          <Property Name="fullName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.students' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="students">
+          <Key>
+            <PropertyRef Name="studentID" />
+            <PropertyRef Name="degree" />
+            <PropertyRef Name="status" />
+            <PropertyRef Name="first_language" />
+            <PropertyRef Name="country_origin" />
+          </Key>
+          <Property Name="studentID" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="dob" Type="datetime" />
+          <Property Name="gender" Type="char" MaxLength="5" />
+          <Property Name="degree" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="status" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="first_language" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="country_origin" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="background" Type="ntext" />
+          <Property Name="HSC" Type="bit" />
+          <Property Name="HSC_mark" Type="char" MaxLength="20" />
+          <Property Name="IELTS" Type="bit" />
+          <Property Name="IELTS_mark" Type="char" MaxLength="20" />
+          <Property Name="TOEFL" Type="bit" />
+          <Property Name="TOEFL_mark" Type="char" MaxLength="20" />
+          <Property Name="TAFE" Type="bit" />
+          <Property Name="TAFE_mark" Type="char" MaxLength="20" />
+          <Property Name="CULT" Type="bit" />
+          <Property Name="CULT_mark" Type="char" MaxLength="20" />
+          <Property Name="InsearchDEEP" Type="bit" />
+          <Property Name="InsearchDEEP_mark" Type="char" MaxLength="20" />
+          <Property Name="InsearchDiploma" Type="bit" />
+          <Property Name="InsearchDiploma_mark" Type="char" MaxLength="20" />
+          <Property Name="foundationcourse" Type="bit" />
+          <Property Name="foundationcourse_mark" Type="char" MaxLength="20" />
+          <Property Name="created" Type="datetime" />
+          <Property Name="creatorID" Type="int" />
+          <Property Name="modified" Type="datetime" />
+          <Property Name="modifierID" Type="int" />
+          <Property Name="archived" Type="datetime" />
+          <Property Name="archiverID" Type="int" />
+          <Property Name="degree_details" Type="char" MaxLength="50" />
+          <Property Name="alternative_contact" Type="text" />
+          <Property Name="caf" Type="bit" />
+          <Property Name="batch" Type="bit" />
+          <Property Name="preferred_name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.waitings' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="waitings">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="studentID" />
+            <PropertyRef Name="sessionId" />
+            <PropertyRef Name="priority" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="studentID" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="sessionId" Type="int" Nullable="false" />
+          <Property Name="assisstance" Type="char" MaxLength="20" />
+          <Property Name="reason" Type="ntext" />
+          <Property Name="priority" Type="int" Nullable="false" />
+          <Property Name="created" Type="datetime" />
+          <Property Name="creatorId" Type="int" />
+          <Property Name="modified" Type="datetime" />
+          <Property Name="modifierId" Type="int" />
+          <Property Name="archived" Type="datetime" />
+          <Property Name="archiverID" Type="int" />
+          <Property Name="isgroup" Type="int" />
+          <Property Name="numpeople" Type="char" MaxLength="10" />
+          <Property Name="assigntype" Type="nvarchar" MaxLength="50" />
+          <Property Name="assigntypeOther" Type="nvarchar" MaxLength="50" />
+          <Property Name="subject" Type="nvarchar" MaxLength="100" />
+          <Property Name="appointments" Type="nvarchar" MaxLength="50" />
+          <Property Name="appointmentsOther" Type="nvarchar" MaxLength="50" />
+          <Property Name="assisstanceText" Type="ntext" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.workshops' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="workshops">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="topic" Type="varchar" MaxLength="255" />
+          <Property Name="description" Type="ntext" />
+          <Property Name="targetingGroup" Type="ntext" />
+          <Property Name="campusID" Type="int" />
+          <Property Name="starting" Type="datetime" />
+          <Property Name="ending" Type="datetime" />
+          <Property Name="maximum" Type="int" />
+          <Property Name="cutoff" Type="int" />
+          <Property Name="creatorID" Type="int" />
+          <Property Name="created" Type="datetime" />
+          <Property Name="modifierID" Type="int" />
+          <Property Name="modified" Type="datetime" />
+          <Property Name="archiverID" Type="int" />
+          <Property Name="archived" Type="datetime" />
+          <Property Name="WorkShopSetID" Type="int" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" />
+          <Property Name="reminder_num" Type="int" />
+          <Property Name="reminder_sent" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.workShops_booking' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="workShops_booking">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="workshopID" Type="int" />
+          <Property Name="studentID" Type="char" MaxLength="10" />
+          <Property Name="created" Type="datetime" />
+          <Property Name="creatorID" Type="int" />
+          <Property Name="modified" Type="datetime" />
+          <Property Name="modifierID" Type="int" />
+          <Property Name="archived" Type="datetime" />
+          <Property Name="archiverID" Type="int" />
+          <Property Name="canceled" Type="int" />
+          <Property Name="attended" Type="int" />
+          <Property Name="notes" Type="ntext" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.workShops_waiting' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="workShops_waiting">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="workshopID" Type="int" />
+          <Property Name="studentID" Type="char" MaxLength="10" />
+          <Property Name="priority" Type="int" />
+          <Property Name="created" Type="datetime" />
+          <Property Name="creatorID" Type="int" />
+          <Property Name="modified" Type="datetime" />
+          <Property Name="modifierID" Type="int" />
+          <Property Name="archived" Type="datetime" />
+          <Property Name="archiverID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'elssa_booking.dbo.WorkShopSet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="WorkShopSet">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" />
+          <Property Name="created" Type="datetime" />
+          <Property Name="creatorID" Type="int" />
+          <Property Name="archived" Type="datetime" />
+          <Property Name="archiverID" Type="int" />
+          <Property Name="modified" Type="datetime" />
+          <Property Name="modifierID" Type="int" />
+          <Property Name="isActived" Type="int" />
+        </EntityType>
         <Function Name="prcCancelWorkshopBooking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="workshopId" Type="int" Mode="In" />
           <Parameter Name="studentId" Type="char" Mode="In" />
@@ -77,6 +448,9 @@
         <Function Name="prcGetWorkshopWaiting" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="workshopId" Type="int" Mode="In" />
           <Parameter Name="studentId" Type="char" Mode="In" />
+        </Function>
+        <Function Name="prcGetWorkshopWaitingList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="workshopId" Type="int" Mode="In" />
         </Function>
         <Function Name="prcListAppointments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="active" Type="bit" Mode="In" />
@@ -159,7 +533,7 @@
           <Parameter Name="canceled" Type="int" Mode="In" />
           <Parameter Name="attended" Type="int" Mode="In" />
           <Parameter Name="userId" Type="int" Mode="In" />
-          <Parameter Name="notes" Type="ntext" Mode="In" />
+          <Parameter Name="notes" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="ufnGetBookingCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
           <Parameter Name="workshopId" Type="int" Mode="In" />
@@ -173,7 +547,250 @@
         <Function Name="ufnGetWorkshopCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
           <Parameter Name="workshopId" Type="int" Mode="In" />
         </Function>
-        <EntityContainer Name="HELPSModelStoreContainer" />
+        <EntityContainer Name="HELPSModelStoreContainer">
+          <EntitySet Name="bookings" EntityType="Self.bookings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="emailtemplates" EntityType="Self.emailtemplates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lecturers" EntityType="Self.lecturers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="appointments" EntityType="Self.appointments" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [appointments].[id] AS [id], 
+    [appointments].[type] AS [type], 
+    [appointments].[orderItem] AS [orderItem], 
+    [appointments].[iscurrent] AS [iscurrent]
+    FROM [dbo].[appointments] AS [appointments]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="assignments" EntityType="Self.assignments" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [assignments].[id] AS [id], 
+    [assignments].[type] AS [type], 
+    [assignments].[orderItem] AS [orderItem], 
+    [assignments].[iscurrent] AS [iscurrent]
+    FROM [dbo].[assignments] AS [assignments]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="campus" EntityType="Self.campus" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [campus].[id] AS [id], 
+    [campus].[campus] AS [campus], 
+    [campus].[creatorID] AS [creatorID], 
+    [campus].[created] AS [created], 
+    [campus].[modifierID] AS [modifierID], 
+    [campus].[modified] AS [modified], 
+    [campus].[archiverID] AS [archiverID], 
+    [campus].[archived] AS [archived]
+    FROM [dbo].[campus] AS [campus]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="emailtemplatesCategory" EntityType="Self.emailtemplatesCategory" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [emailtemplatesCategory].[id] AS [id], 
+    [emailtemplatesCategory].[category] AS [category]
+    FROM [dbo].[emailtemplatesCategory] AS [emailtemplatesCategory]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="learningissues" EntityType="Self.learningissues" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [learningissues].[id] AS [id], 
+    [learningissues].[issue] AS [issue], 
+    [learningissues].[researchonly] AS [researchonly], 
+    [learningissues].[orderitem] AS [orderitem], 
+    [learningissues].[iscurrent] AS [iscurrent]
+    FROM [dbo].[learningissues] AS [learningissues]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="messages" EntityType="Self.messages" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [messages].[id] AS [id], 
+    [messages].[path] AS [path], 
+    [messages].[filename] AS [filename], 
+    [messages].[modifierID] AS [modifierID], 
+    [messages].[modified] AS [modified], 
+    [messages].[description] AS [description], 
+    [messages].[text] AS [text], 
+    [messages].[cssID] AS [cssID], 
+    [messages].[isactive] AS [isactive]
+    FROM [dbo].[messages] AS [messages]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="programs" EntityType="Self.programs" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [programs].[id] AS [id], 
+    [programs].[name] AS [name], 
+    [programs].[days] AS [days], 
+    [programs].[numOfWeeks] AS [numOfWeeks], 
+    [programs].[startDate] AS [startDate], 
+    [programs].[endDate] AS [endDate], 
+    [programs].[maximum] AS [maximum], 
+    [programs].[cutoff] AS [cutoff], 
+    [programs].[created] AS [created], 
+    [programs].[creatorId] AS [creatorId], 
+    [programs].[modified] AS [modified], 
+    [programs].[modifierId] AS [modifierId], 
+    [programs].[archived] AS [archived], 
+    [programs].[archiverId] AS [archiverId], 
+    [programs].[reminder_num] AS [reminder_num], 
+    [programs].[reminder_sent] AS [reminder_sent]
+    FROM [dbo].[programs] AS [programs]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sessionDocuments" EntityType="Self.sessionDocuments" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sessionDocuments].[id] AS [id], 
+    [sessionDocuments].[sessionID] AS [sessionID], 
+    [sessionDocuments].[studentID] AS [studentID], 
+    [sessionDocuments].[filename] AS [filename], 
+    [sessionDocuments].[CreatorId] AS [CreatorId], 
+    [sessionDocuments].[archived] AS [archived]
+    FROM [dbo].[sessionDocuments] AS [sessionDocuments]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sessions" EntityType="Self.sessions" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sessions].[id] AS [id], 
+    [sessions].[starting] AS [starting], 
+    [sessions].[ending] AS [ending], 
+    [sessions].[campus] AS [campus], 
+    [sessions].[lecturer] AS [lecturer], 
+    [sessions].[type] AS [type], 
+    [sessions].[created] AS [created], 
+    [sessions].[creatorId] AS [creatorId], 
+    [sessions].[modified] AS [modified], 
+    [sessions].[modifierId] AS [modifierId], 
+    [sessions].[archived] AS [archived], 
+    [sessions].[archiverID] AS [archiverID]
+    FROM [dbo].[sessions] AS [sessions]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sessionsType" EntityType="Self.sessionsType" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sessionsType].[id] AS [id], 
+    [sessionsType].[abbName] AS [abbName], 
+    [sessionsType].[iscurrent] AS [iscurrent], 
+    [sessionsType].[fullName] AS [fullName]
+    FROM [dbo].[sessionsType] AS [sessionsType]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="students" EntityType="Self.students" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [students].[studentID] AS [studentID], 
+    [students].[dob] AS [dob], 
+    [students].[gender] AS [gender], 
+    [students].[degree] AS [degree], 
+    [students].[status] AS [status], 
+    [students].[first_language] AS [first_language], 
+    [students].[country_origin] AS [country_origin], 
+    [students].[background] AS [background], 
+    [students].[HSC] AS [HSC], 
+    [students].[HSC_mark] AS [HSC_mark], 
+    [students].[IELTS] AS [IELTS], 
+    [students].[IELTS_mark] AS [IELTS_mark], 
+    [students].[TOEFL] AS [TOEFL], 
+    [students].[TOEFL_mark] AS [TOEFL_mark], 
+    [students].[TAFE] AS [TAFE], 
+    [students].[TAFE_mark] AS [TAFE_mark], 
+    [students].[CULT] AS [CULT], 
+    [students].[CULT_mark] AS [CULT_mark], 
+    [students].[InsearchDEEP] AS [InsearchDEEP], 
+    [students].[InsearchDEEP_mark] AS [InsearchDEEP_mark], 
+    [students].[InsearchDiploma] AS [InsearchDiploma], 
+    [students].[InsearchDiploma_mark] AS [InsearchDiploma_mark], 
+    [students].[foundationcourse] AS [foundationcourse], 
+    [students].[foundationcourse_mark] AS [foundationcourse_mark], 
+    [students].[created] AS [created], 
+    [students].[creatorID] AS [creatorID], 
+    [students].[modified] AS [modified], 
+    [students].[modifierID] AS [modifierID], 
+    [students].[archived] AS [archived], 
+    [students].[archiverID] AS [archiverID], 
+    [students].[degree_details] AS [degree_details], 
+    [students].[alternative_contact] AS [alternative_contact], 
+    [students].[caf] AS [caf], 
+    [students].[batch] AS [batch], 
+    [students].[preferred_name] AS [preferred_name]
+    FROM [dbo].[students] AS [students]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="waitings" EntityType="Self.waitings" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [waitings].[id] AS [id], 
+    [waitings].[studentID] AS [studentID], 
+    [waitings].[sessionId] AS [sessionId], 
+    [waitings].[assisstance] AS [assisstance], 
+    [waitings].[reason] AS [reason], 
+    [waitings].[priority] AS [priority], 
+    [waitings].[created] AS [created], 
+    [waitings].[creatorId] AS [creatorId], 
+    [waitings].[modified] AS [modified], 
+    [waitings].[modifierId] AS [modifierId], 
+    [waitings].[archived] AS [archived], 
+    [waitings].[archiverID] AS [archiverID], 
+    [waitings].[isgroup] AS [isgroup], 
+    [waitings].[numpeople] AS [numpeople], 
+    [waitings].[assigntype] AS [assigntype], 
+    [waitings].[assigntypeOther] AS [assigntypeOther], 
+    [waitings].[subject] AS [subject], 
+    [waitings].[appointments] AS [appointments], 
+    [waitings].[appointmentsOther] AS [appointmentsOther], 
+    [waitings].[assisstanceText] AS [assisstanceText]
+    FROM [dbo].[waitings] AS [waitings]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="workshops" EntityType="Self.workshops" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [workshops].[id] AS [id], 
+    [workshops].[topic] AS [topic], 
+    [workshops].[description] AS [description], 
+    [workshops].[targetingGroup] AS [targetingGroup], 
+    [workshops].[campusID] AS [campusID], 
+    [workshops].[starting] AS [starting], 
+    [workshops].[ending] AS [ending], 
+    [workshops].[maximum] AS [maximum], 
+    [workshops].[cutoff] AS [cutoff], 
+    [workshops].[creatorID] AS [creatorID], 
+    [workshops].[created] AS [created], 
+    [workshops].[modifierID] AS [modifierID], 
+    [workshops].[modified] AS [modified], 
+    [workshops].[archiverID] AS [archiverID], 
+    [workshops].[archived] AS [archived], 
+    [workshops].[WorkShopSetID] AS [WorkShopSetID], 
+    [workshops].[type] AS [type], 
+    [workshops].[reminder_num] AS [reminder_num], 
+    [workshops].[reminder_sent] AS [reminder_sent]
+    FROM [dbo].[workshops] AS [workshops]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="workShops_booking" EntityType="Self.workShops_booking" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [workShops_booking].[id] AS [id], 
+    [workShops_booking].[workshopID] AS [workshopID], 
+    [workShops_booking].[studentID] AS [studentID], 
+    [workShops_booking].[created] AS [created], 
+    [workShops_booking].[creatorID] AS [creatorID], 
+    [workShops_booking].[modified] AS [modified], 
+    [workShops_booking].[modifierID] AS [modifierID], 
+    [workShops_booking].[archived] AS [archived], 
+    [workShops_booking].[archiverID] AS [archiverID], 
+    [workShops_booking].[canceled] AS [canceled], 
+    [workShops_booking].[attended] AS [attended], 
+    [workShops_booking].[notes] AS [notes]
+    FROM [dbo].[workShops_booking] AS [workShops_booking]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="workShops_waiting" EntityType="Self.workShops_waiting" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [workShops_waiting].[id] AS [id], 
+    [workShops_waiting].[workshopID] AS [workshopID], 
+    [workShops_waiting].[studentID] AS [studentID], 
+    [workShops_waiting].[priority] AS [priority], 
+    [workShops_waiting].[created] AS [created], 
+    [workShops_waiting].[creatorID] AS [creatorID], 
+    [workShops_waiting].[modified] AS [modified], 
+    [workShops_waiting].[modifierID] AS [modifierID], 
+    [workShops_waiting].[archived] AS [archived], 
+    [workShops_waiting].[archiverID] AS [archiverID]
+    FROM [dbo].[workShops_waiting] AS [workShops_waiting]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="WorkShopSet" EntityType="Self.WorkShopSet" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [WorkShopSet].[id] AS [id], 
+    [WorkShopSet].[name] AS [name], 
+    [WorkShopSet].[created] AS [created], 
+    [WorkShopSet].[creatorID] AS [creatorID], 
+    [WorkShopSet].[archived] AS [archived], 
+    [WorkShopSet].[archiverID] AS [archiverID], 
+    [WorkShopSet].[modified] AS [modified], 
+    [WorkShopSet].[modifierID] AS [modifierID], 
+    [WorkShopSet].[isActived] AS [isActived]
+    FROM [dbo].[WorkShopSet] AS [WorkShopSet]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -334,6 +951,28 @@
           </FunctionImport>
           <FunctionImport Name="prcGetProgramWorkshops" ReturnType="Collection(Int32)">
           <Parameter Name="programId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="bookings" EntityType="HELPSModel.booking" />
+          <EntitySet Name="emailtemplates" EntityType="HELPSModel.emailtemplate" />
+          <EntitySet Name="lecturer1" EntityType="HELPSModel.lecturer1" />
+          <EntitySet Name="appointment1" EntityType="HELPSModel.appointment1" />
+          <EntitySet Name="assignment1" EntityType="HELPSModel.assignment1" />
+          <EntitySet Name="campus" EntityType="HELPSModel.campu" />
+          <EntitySet Name="emailtemplatesCategories" EntityType="HELPSModel.emailtemplatesCategory" />
+          <EntitySet Name="learningissues" EntityType="HELPSModel.learningissue" />
+          <EntitySet Name="messages" EntityType="HELPSModel.message" />
+          <EntitySet Name="programs" EntityType="HELPSModel.program" />
+          <EntitySet Name="sessionDocuments" EntityType="HELPSModel.sessionDocument" />
+          <EntitySet Name="sessions" EntityType="HELPSModel.session" />
+          <EntitySet Name="sessionsTypes" EntityType="HELPSModel.sessionsType" />
+          <EntitySet Name="student1" EntityType="HELPSModel.student1" />
+          <EntitySet Name="waitings" EntityType="HELPSModel.waiting" />
+          <EntitySet Name="workshop1" EntityType="HELPSModel.workshop1" />
+          <EntitySet Name="workShops_booking" EntityType="HELPSModel.workShops_booking" />
+          <EntitySet Name="workShops_waiting" EntityType="HELPSModel.workShops_waiting" />
+          <EntitySet Name="WorkShopSet1" EntityType="HELPSModel.WorkShopSet1" />
+          <FunctionImport Name="prcGetWorkshopWaitingList" ReturnType="Collection(HELPSModel.BasicWorkshopWaiting)">
+            <Parameter Name="workshopId" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SessionType">
@@ -538,6 +1177,346 @@
           <Property Type="String" Name="last_name" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="email" Nullable="false" MaxLength="100" />
           <Property Type="Boolean" Name="inactive" Nullable="true" />
+          <Property Type="DateTime" Name="archived" Nullable="true" Precision="23" />
+        </ComplexType>
+        <EntityType Name="booking">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="studentID" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="sessionId" Type="Int32" Nullable="false" />
+          <Property Name="cancel" Type="Boolean" Nullable="false" />
+          <Property Name="assisstance" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="attended" Type="Int32" />
+          <Property Name="waitingID" Type="Int32" />
+          <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="creatorId" Type="Int32" Nullable="false" />
+          <Property Name="modified" Type="DateTime" Precision="3" />
+          <Property Name="modifierId" Type="Int32" />
+          <Property Name="archived" Type="DateTime" Precision="3" />
+          <Property Name="archiverID" Type="Int32" />
+          <Property Name="isgroup" Type="Int32" />
+          <Property Name="numpeople" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="lecturercomment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="learningissues" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="islocked" Type="Int32" />
+          <Property Name="assigntype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="assigntypeOther" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="subject" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="appointments" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="appointmentsOther" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="assisstanceText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="emailtemplate">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="body" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="stagingsubject" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="stagingbody" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="modified" Type="DateTime" Precision="3" />
+          <Property Name="ModifierID" Type="Int32" />
+          <Property Name="published" Type="DateTime" Precision="3" />
+          <Property Name="PublisherID" Type="Int32" />
+          <Property Name="isactived" Type="Int32" />
+          <Property Name="categoryID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="lecturer1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="staffID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="first_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="last_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="creatorId" Type="Int32" Nullable="false" />
+          <Property Name="modified" Type="DateTime" Precision="3" />
+          <Property Name="modifierId" Type="Int32" />
+          <Property Name="archived" Type="DateTime" Precision="3" />
+          <Property Name="archiverID" Type="Int32" />
+          <Property Name="inactive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="appointment1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="orderItem" Type="Int32" />
+          <Property Name="iscurrent" Type="Int32" />
+        </EntityType>
+        <EntityType Name="assignment1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="orderItem" Type="Int32" />
+          <Property Name="iscurrent" Type="Int32" />
+        </EntityType>
+        <EntityType Name="campu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="campus" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="creatorID" Type="Int32" />
+          <Property Name="created" Type="DateTime" Precision="3" />
+          <Property Name="modifierID" Type="Int32" />
+          <Property Name="modified" Type="DateTime" Precision="3" />
+          <Property Name="archiverID" Type="Int32" />
+          <Property Name="archived" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="emailtemplatesCategory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="category" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="learningissue">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="issue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="researchonly" Type="Int32" />
+          <Property Name="orderitem" Type="Int32" />
+          <Property Name="iscurrent" Type="Int32" />
+        </EntityType>
+        <EntityType Name="message">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="path" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="filename" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modifierID" Type="Int32" />
+          <Property Name="modified" Type="DateTime" Precision="3" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="cssID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="isactive" Type="Int32" />
+        </EntityType>
+        <EntityType Name="program">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="days" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="numOfWeeks" Type="Int32" />
+          <Property Name="startDate" Type="DateTime" Precision="0" />
+          <Property Name="endDate" Type="DateTime" Precision="0" />
+          <Property Name="maximum" Type="Int32" />
+          <Property Name="cutoff" Type="Int32" />
+          <Property Name="created" Type="DateTime" Precision="3" />
+          <Property Name="creatorId" Type="Int32" />
+          <Property Name="modified" Type="DateTime" Precision="3" />
+          <Property Name="modifierId" Type="Int32" />
+          <Property Name="archived" Type="DateTime" Precision="3" />
+          <Property Name="archiverId" Type="Int32" />
+          <Property Name="reminder_num" Type="Int32" />
+          <Property Name="reminder_sent" Type="Int32" />
+        </EntityType>
+        <EntityType Name="sessionDocument">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sessionID" Type="Int32" />
+          <Property Name="studentID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="filename" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CreatorId" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="archived" Type="Int32" />
+        </EntityType>
+        <EntityType Name="session">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="starting" />
+            <PropertyRef Name="ending" />
+            <PropertyRef Name="campus" />
+            <PropertyRef Name="lecturer" />
+            <PropertyRef Name="type" />
+            <PropertyRef Name="created" />
+            <PropertyRef Name="creatorId" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="starting" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ending" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="campus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lecturer" Type="Int32" Nullable="false" />
+          <Property Name="type" Type="Int32" Nullable="false" />
+          <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="creatorId" Type="Int32" Nullable="false" />
+          <Property Name="modified" Type="DateTime" Precision="3" />
+          <Property Name="modifierId" Type="Int32" />
+          <Property Name="archived" Type="DateTime" Precision="3" />
+          <Property Name="archiverID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="sessionsType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="abbName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="iscurrent" Type="Boolean" />
+          <Property Name="fullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="student1">
+          <Key>
+            <PropertyRef Name="studentID" />
+            <PropertyRef Name="degree" />
+            <PropertyRef Name="status" />
+            <PropertyRef Name="first_language" />
+            <PropertyRef Name="country_origin" />
+          </Key>
+          <Property Name="studentID" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="dob" Type="DateTime" Precision="3" />
+          <Property Name="gender" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="degree" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="status" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="first_language" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="country_origin" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="background" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HSC" Type="Boolean" />
+          <Property Name="HSC_mark" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="IELTS" Type="Boolean" />
+          <Property Name="IELTS_mark" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="TOEFL" Type="Boolean" />
+          <Property Name="TOEFL_mark" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="TAFE" Type="Boolean" />
+          <Property Name="TAFE_mark" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="CULT" Type="Boolean" />
+          <Property Name="CULT_mark" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="InsearchDEEP" Type="Boolean" />
+          <Property Name="InsearchDEEP_mark" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="InsearchDiploma" Type="Boolean" />
+          <Property Name="InsearchDiploma_mark" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="foundationcourse" Type="Boolean" />
+          <Property Name="foundationcourse_mark" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="created" Type="DateTime" Precision="3" />
+          <Property Name="creatorID" Type="Int32" />
+          <Property Name="modified" Type="DateTime" Precision="3" />
+          <Property Name="modifierID" Type="Int32" />
+          <Property Name="archived" Type="DateTime" Precision="3" />
+          <Property Name="archiverID" Type="Int32" />
+          <Property Name="degree_details" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="alternative_contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="caf" Type="Boolean" />
+          <Property Name="batch" Type="Boolean" />
+          <Property Name="preferred_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="waiting">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="studentID" />
+            <PropertyRef Name="sessionId" />
+            <PropertyRef Name="priority" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="studentID" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="sessionId" Type="Int32" Nullable="false" />
+          <Property Name="assisstance" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="priority" Type="Int32" Nullable="false" />
+          <Property Name="created" Type="DateTime" Precision="3" />
+          <Property Name="creatorId" Type="Int32" />
+          <Property Name="modified" Type="DateTime" Precision="3" />
+          <Property Name="modifierId" Type="Int32" />
+          <Property Name="archived" Type="DateTime" Precision="3" />
+          <Property Name="archiverID" Type="Int32" />
+          <Property Name="isgroup" Type="Int32" />
+          <Property Name="numpeople" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="assigntype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="assigntypeOther" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="subject" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="appointments" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="appointmentsOther" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="assisstanceText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="workshop1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="topic" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="targetingGroup" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="campusID" Type="Int32" />
+          <Property Name="starting" Type="DateTime" Precision="3" />
+          <Property Name="ending" Type="DateTime" Precision="3" />
+          <Property Name="maximum" Type="Int32" />
+          <Property Name="cutoff" Type="Int32" />
+          <Property Name="creatorID" Type="Int32" />
+          <Property Name="created" Type="DateTime" Precision="3" />
+          <Property Name="modifierID" Type="Int32" />
+          <Property Name="modified" Type="DateTime" Precision="3" />
+          <Property Name="archiverID" Type="Int32" />
+          <Property Name="archived" Type="DateTime" Precision="3" />
+          <Property Name="WorkShopSetID" Type="Int32" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="reminder_num" Type="Int32" />
+          <Property Name="reminder_sent" Type="Int32" />
+        </EntityType>
+        <EntityType Name="workShops_booking">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="workshopID" Type="Int32" />
+          <Property Name="studentID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="created" Type="DateTime" Precision="3" />
+          <Property Name="creatorID" Type="Int32" />
+          <Property Name="modified" Type="DateTime" Precision="3" />
+          <Property Name="modifierID" Type="Int32" />
+          <Property Name="archived" Type="DateTime" Precision="3" />
+          <Property Name="archiverID" Type="Int32" />
+          <Property Name="canceled" Type="Int32" />
+          <Property Name="attended" Type="Int32" />
+          <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="workShops_waiting">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="workshopID" Type="Int32" />
+          <Property Name="studentID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="priority" Type="Int32" />
+          <Property Name="created" Type="DateTime" Precision="3" />
+          <Property Name="creatorID" Type="Int32" />
+          <Property Name="modified" Type="DateTime" Precision="3" />
+          <Property Name="modifierID" Type="Int32" />
+          <Property Name="archived" Type="DateTime" Precision="3" />
+          <Property Name="archiverID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="WorkShopSet1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="created" Type="DateTime" Precision="3" />
+          <Property Name="creatorID" Type="Int32" />
+          <Property Name="archived" Type="DateTime" Precision="3" />
+          <Property Name="archiverID" Type="Int32" />
+          <Property Name="modified" Type="DateTime" Precision="3" />
+          <Property Name="modifierID" Type="Int32" />
+          <Property Name="isActived" Type="Int32" />
+        </EntityType>
+        <ComplexType Name="prcGetWorkshopWaitingList_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="workshopID" Nullable="true" />
+          <Property Type="String" Name="studentID" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="priority" Nullable="true" />
           <Property Type="DateTime" Name="archived" Nullable="true" Precision="23" />
         </ComplexType>
       </Schema>
@@ -839,6 +1818,355 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="prcGetProgramWorkshops" FunctionName="HELPSModel.Store.prcGetProgramWorkshops" />
+          <EntitySetMapping Name="bookings">
+            <EntityTypeMapping TypeName="HELPSModel.booking">
+              <MappingFragment StoreEntitySet="bookings">
+                <ScalarProperty Name="assisstanceText" ColumnName="assisstanceText" />
+                <ScalarProperty Name="appointmentsOther" ColumnName="appointmentsOther" />
+                <ScalarProperty Name="appointments" ColumnName="appointments" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="assigntypeOther" ColumnName="assigntypeOther" />
+                <ScalarProperty Name="assigntype" ColumnName="assigntype" />
+                <ScalarProperty Name="islocked" ColumnName="islocked" />
+                <ScalarProperty Name="learningissues" ColumnName="learningissues" />
+                <ScalarProperty Name="lecturercomment" ColumnName="lecturercomment" />
+                <ScalarProperty Name="numpeople" ColumnName="numpeople" />
+                <ScalarProperty Name="isgroup" ColumnName="isgroup" />
+                <ScalarProperty Name="archiverID" ColumnName="archiverID" />
+                <ScalarProperty Name="archived" ColumnName="archived" />
+                <ScalarProperty Name="modifierId" ColumnName="modifierId" />
+                <ScalarProperty Name="modified" ColumnName="modified" />
+                <ScalarProperty Name="creatorId" ColumnName="creatorId" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="waitingID" ColumnName="waitingID" />
+                <ScalarProperty Name="attended" ColumnName="attended" />
+                <ScalarProperty Name="reason" ColumnName="reason" />
+                <ScalarProperty Name="assisstance" ColumnName="assisstance" />
+                <ScalarProperty Name="cancel" ColumnName="cancel" />
+                <ScalarProperty Name="sessionId" ColumnName="sessionId" />
+                <ScalarProperty Name="studentID" ColumnName="studentID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="emailtemplates">
+            <EntityTypeMapping TypeName="HELPSModel.emailtemplate">
+              <MappingFragment StoreEntitySet="emailtemplates">
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="isactived" ColumnName="isactived" />
+                <ScalarProperty Name="PublisherID" ColumnName="PublisherID" />
+                <ScalarProperty Name="published" ColumnName="published" />
+                <ScalarProperty Name="ModifierID" ColumnName="ModifierID" />
+                <ScalarProperty Name="modified" ColumnName="modified" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="stagingbody" ColumnName="stagingbody" />
+                <ScalarProperty Name="stagingsubject" ColumnName="stagingsubject" />
+                <ScalarProperty Name="body" ColumnName="body" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lecturer1">
+            <EntityTypeMapping TypeName="HELPSModel.lecturer1">
+              <MappingFragment StoreEntitySet="lecturers">
+                <ScalarProperty Name="inactive" ColumnName="inactive" />
+                <ScalarProperty Name="archiverID" ColumnName="archiverID" />
+                <ScalarProperty Name="archived" ColumnName="archived" />
+                <ScalarProperty Name="modifierId" ColumnName="modifierId" />
+                <ScalarProperty Name="modified" ColumnName="modified" />
+                <ScalarProperty Name="creatorId" ColumnName="creatorId" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="staffID" ColumnName="staffID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="appointment1">
+            <EntityTypeMapping TypeName="HELPSModel.appointment1">
+              <MappingFragment StoreEntitySet="appointments">
+                <ScalarProperty Name="iscurrent" ColumnName="iscurrent" />
+                <ScalarProperty Name="orderItem" ColumnName="orderItem" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="assignment1">
+            <EntityTypeMapping TypeName="HELPSModel.assignment1">
+              <MappingFragment StoreEntitySet="assignments">
+                <ScalarProperty Name="iscurrent" ColumnName="iscurrent" />
+                <ScalarProperty Name="orderItem" ColumnName="orderItem" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="campus">
+            <EntityTypeMapping TypeName="HELPSModel.campu">
+              <MappingFragment StoreEntitySet="campus">
+                <ScalarProperty Name="archived" ColumnName="archived" />
+                <ScalarProperty Name="archiverID" ColumnName="archiverID" />
+                <ScalarProperty Name="modified" ColumnName="modified" />
+                <ScalarProperty Name="modifierID" ColumnName="modifierID" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="creatorID" ColumnName="creatorID" />
+                <ScalarProperty Name="campus" ColumnName="campus" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="emailtemplatesCategories">
+            <EntityTypeMapping TypeName="HELPSModel.emailtemplatesCategory">
+              <MappingFragment StoreEntitySet="emailtemplatesCategory">
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="learningissues">
+            <EntityTypeMapping TypeName="HELPSModel.learningissue">
+              <MappingFragment StoreEntitySet="learningissues">
+                <ScalarProperty Name="iscurrent" ColumnName="iscurrent" />
+                <ScalarProperty Name="orderitem" ColumnName="orderitem" />
+                <ScalarProperty Name="researchonly" ColumnName="researchonly" />
+                <ScalarProperty Name="issue" ColumnName="issue" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="messages">
+            <EntityTypeMapping TypeName="HELPSModel.message">
+              <MappingFragment StoreEntitySet="messages">
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="cssID" ColumnName="cssID" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="modified" ColumnName="modified" />
+                <ScalarProperty Name="modifierID" ColumnName="modifierID" />
+                <ScalarProperty Name="filename" ColumnName="filename" />
+                <ScalarProperty Name="path" ColumnName="path" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="programs">
+            <EntityTypeMapping TypeName="HELPSModel.program">
+              <MappingFragment StoreEntitySet="programs">
+                <ScalarProperty Name="reminder_sent" ColumnName="reminder_sent" />
+                <ScalarProperty Name="reminder_num" ColumnName="reminder_num" />
+                <ScalarProperty Name="archiverId" ColumnName="archiverId" />
+                <ScalarProperty Name="archived" ColumnName="archived" />
+                <ScalarProperty Name="modifierId" ColumnName="modifierId" />
+                <ScalarProperty Name="modified" ColumnName="modified" />
+                <ScalarProperty Name="creatorId" ColumnName="creatorId" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="cutoff" ColumnName="cutoff" />
+                <ScalarProperty Name="maximum" ColumnName="maximum" />
+                <ScalarProperty Name="endDate" ColumnName="endDate" />
+                <ScalarProperty Name="startDate" ColumnName="startDate" />
+                <ScalarProperty Name="numOfWeeks" ColumnName="numOfWeeks" />
+                <ScalarProperty Name="days" ColumnName="days" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sessionDocuments">
+            <EntityTypeMapping TypeName="HELPSModel.sessionDocument">
+              <MappingFragment StoreEntitySet="sessionDocuments">
+                <ScalarProperty Name="archived" ColumnName="archived" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="filename" ColumnName="filename" />
+                <ScalarProperty Name="studentID" ColumnName="studentID" />
+                <ScalarProperty Name="sessionID" ColumnName="sessionID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sessions">
+            <EntityTypeMapping TypeName="HELPSModel.session">
+              <MappingFragment StoreEntitySet="sessions">
+                <ScalarProperty Name="archiverID" ColumnName="archiverID" />
+                <ScalarProperty Name="archived" ColumnName="archived" />
+                <ScalarProperty Name="modifierId" ColumnName="modifierId" />
+                <ScalarProperty Name="modified" ColumnName="modified" />
+                <ScalarProperty Name="creatorId" ColumnName="creatorId" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="lecturer" ColumnName="lecturer" />
+                <ScalarProperty Name="campus" ColumnName="campus" />
+                <ScalarProperty Name="ending" ColumnName="ending" />
+                <ScalarProperty Name="starting" ColumnName="starting" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sessionsTypes">
+            <EntityTypeMapping TypeName="HELPSModel.sessionsType">
+              <MappingFragment StoreEntitySet="sessionsType">
+                <ScalarProperty Name="fullName" ColumnName="fullName" />
+                <ScalarProperty Name="iscurrent" ColumnName="iscurrent" />
+                <ScalarProperty Name="abbName" ColumnName="abbName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="student1">
+            <EntityTypeMapping TypeName="HELPSModel.student1">
+              <MappingFragment StoreEntitySet="students">
+                <ScalarProperty Name="preferred_name" ColumnName="preferred_name" />
+                <ScalarProperty Name="batch" ColumnName="batch" />
+                <ScalarProperty Name="caf" ColumnName="caf" />
+                <ScalarProperty Name="alternative_contact" ColumnName="alternative_contact" />
+                <ScalarProperty Name="degree_details" ColumnName="degree_details" />
+                <ScalarProperty Name="archiverID" ColumnName="archiverID" />
+                <ScalarProperty Name="archived" ColumnName="archived" />
+                <ScalarProperty Name="modifierID" ColumnName="modifierID" />
+                <ScalarProperty Name="modified" ColumnName="modified" />
+                <ScalarProperty Name="creatorID" ColumnName="creatorID" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="foundationcourse_mark" ColumnName="foundationcourse_mark" />
+                <ScalarProperty Name="foundationcourse" ColumnName="foundationcourse" />
+                <ScalarProperty Name="InsearchDiploma_mark" ColumnName="InsearchDiploma_mark" />
+                <ScalarProperty Name="InsearchDiploma" ColumnName="InsearchDiploma" />
+                <ScalarProperty Name="InsearchDEEP_mark" ColumnName="InsearchDEEP_mark" />
+                <ScalarProperty Name="InsearchDEEP" ColumnName="InsearchDEEP" />
+                <ScalarProperty Name="CULT_mark" ColumnName="CULT_mark" />
+                <ScalarProperty Name="CULT" ColumnName="CULT" />
+                <ScalarProperty Name="TAFE_mark" ColumnName="TAFE_mark" />
+                <ScalarProperty Name="TAFE" ColumnName="TAFE" />
+                <ScalarProperty Name="TOEFL_mark" ColumnName="TOEFL_mark" />
+                <ScalarProperty Name="TOEFL" ColumnName="TOEFL" />
+                <ScalarProperty Name="IELTS_mark" ColumnName="IELTS_mark" />
+                <ScalarProperty Name="IELTS" ColumnName="IELTS" />
+                <ScalarProperty Name="HSC_mark" ColumnName="HSC_mark" />
+                <ScalarProperty Name="HSC" ColumnName="HSC" />
+                <ScalarProperty Name="background" ColumnName="background" />
+                <ScalarProperty Name="country_origin" ColumnName="country_origin" />
+                <ScalarProperty Name="first_language" ColumnName="first_language" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="degree" ColumnName="degree" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="studentID" ColumnName="studentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="waitings">
+            <EntityTypeMapping TypeName="HELPSModel.waiting">
+              <MappingFragment StoreEntitySet="waitings">
+                <ScalarProperty Name="assisstanceText" ColumnName="assisstanceText" />
+                <ScalarProperty Name="appointmentsOther" ColumnName="appointmentsOther" />
+                <ScalarProperty Name="appointments" ColumnName="appointments" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="assigntypeOther" ColumnName="assigntypeOther" />
+                <ScalarProperty Name="assigntype" ColumnName="assigntype" />
+                <ScalarProperty Name="numpeople" ColumnName="numpeople" />
+                <ScalarProperty Name="isgroup" ColumnName="isgroup" />
+                <ScalarProperty Name="archiverID" ColumnName="archiverID" />
+                <ScalarProperty Name="archived" ColumnName="archived" />
+                <ScalarProperty Name="modifierId" ColumnName="modifierId" />
+                <ScalarProperty Name="modified" ColumnName="modified" />
+                <ScalarProperty Name="creatorId" ColumnName="creatorId" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="priority" ColumnName="priority" />
+                <ScalarProperty Name="reason" ColumnName="reason" />
+                <ScalarProperty Name="assisstance" ColumnName="assisstance" />
+                <ScalarProperty Name="sessionId" ColumnName="sessionId" />
+                <ScalarProperty Name="studentID" ColumnName="studentID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="workshop1">
+            <EntityTypeMapping TypeName="HELPSModel.workshop1">
+              <MappingFragment StoreEntitySet="workshops">
+                <ScalarProperty Name="reminder_sent" ColumnName="reminder_sent" />
+                <ScalarProperty Name="reminder_num" ColumnName="reminder_num" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="WorkShopSetID" ColumnName="WorkShopSetID" />
+                <ScalarProperty Name="archived" ColumnName="archived" />
+                <ScalarProperty Name="archiverID" ColumnName="archiverID" />
+                <ScalarProperty Name="modified" ColumnName="modified" />
+                <ScalarProperty Name="modifierID" ColumnName="modifierID" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="creatorID" ColumnName="creatorID" />
+                <ScalarProperty Name="cutoff" ColumnName="cutoff" />
+                <ScalarProperty Name="maximum" ColumnName="maximum" />
+                <ScalarProperty Name="ending" ColumnName="ending" />
+                <ScalarProperty Name="starting" ColumnName="starting" />
+                <ScalarProperty Name="campusID" ColumnName="campusID" />
+                <ScalarProperty Name="targetingGroup" ColumnName="targetingGroup" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="topic" ColumnName="topic" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="workShops_booking">
+            <EntityTypeMapping TypeName="HELPSModel.workShops_booking">
+              <MappingFragment StoreEntitySet="workShops_booking">
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="attended" ColumnName="attended" />
+                <ScalarProperty Name="canceled" ColumnName="canceled" />
+                <ScalarProperty Name="archiverID" ColumnName="archiverID" />
+                <ScalarProperty Name="archived" ColumnName="archived" />
+                <ScalarProperty Name="modifierID" ColumnName="modifierID" />
+                <ScalarProperty Name="modified" ColumnName="modified" />
+                <ScalarProperty Name="creatorID" ColumnName="creatorID" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="studentID" ColumnName="studentID" />
+                <ScalarProperty Name="workshopID" ColumnName="workshopID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="workShops_waiting">
+            <EntityTypeMapping TypeName="HELPSModel.workShops_waiting">
+              <MappingFragment StoreEntitySet="workShops_waiting">
+                <ScalarProperty Name="archiverID" ColumnName="archiverID" />
+                <ScalarProperty Name="archived" ColumnName="archived" />
+                <ScalarProperty Name="modifierID" ColumnName="modifierID" />
+                <ScalarProperty Name="modified" ColumnName="modified" />
+                <ScalarProperty Name="creatorID" ColumnName="creatorID" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="priority" ColumnName="priority" />
+                <ScalarProperty Name="studentID" ColumnName="studentID" />
+                <ScalarProperty Name="workshopID" ColumnName="workshopID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkShopSet1">
+            <EntityTypeMapping TypeName="HELPSModel.WorkShopSet1">
+              <MappingFragment StoreEntitySet="WorkShopSet">
+                <ScalarProperty Name="isActived" ColumnName="isActived" />
+                <ScalarProperty Name="modifierID" ColumnName="modifierID" />
+                <ScalarProperty Name="modified" ColumnName="modified" />
+                <ScalarProperty Name="archiverID" ColumnName="archiverID" />
+                <ScalarProperty Name="archived" ColumnName="archived" />
+                <ScalarProperty Name="creatorID" ColumnName="creatorID" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="prcGetWorkshopWaitingList" FunctionName="HELPSModel.Store.prcGetWorkshopWaitingList">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="HELPSModel.BasicWorkshopWaiting">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="workshopID" ColumnName="workshopID" />
+                <ScalarProperty Name="studentID" ColumnName="studentID" />
+                <ScalarProperty Name="priority" ColumnName="priority" />
+                <ScalarProperty Name="archived" ColumnName="archived" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

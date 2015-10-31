@@ -225,6 +225,47 @@ namespace UTS.HELPS.WebServices.WebAPI.Controllers
         }
 
         [HttpPost]
+        [Route("api/workshop/wait/count")]
+        public WaitListCountResponse CountWorkshopWaiting(int workshopId)
+        {
+            try
+            {
+                base.CheckApplicationKey();
+
+                // Check the workshop exists
+                BasicWorkshop workshop = WorkshopDb.GetWorkshop(workshopId);
+                if (workshop == null)
+                {
+                    return new WaitListCountResponse()
+                    {
+                        Count = -1,
+                        IsSuccess = false,
+                        DisplayMessage = ErrorMessages.WORKSHOP_NOT_FOUND
+                    };
+                }
+
+                //Count the waitlist and return
+                List<BasicWorkshopWaiting> waiting = WorkshopDb.GetWorkshopWaitingList(workshopId);
+                return new WaitListCountResponse()
+                {
+                    IsSuccess = true,
+                    Count = waiting.Count
+                };
+            }
+            catch (Exception e)
+            {
+                string msg = CreateExceptionMessage(e);
+                return new WaitListCountResponse()
+                {
+                    Count = -1,
+                    IsSuccess = false,
+                    DisplayMessage = string.Format(ErrorMessages.CREATE_WORKSHOP_WAITING_ERROR, msg)
+                };
+            }
+        }
+
+        [
+            HttpPost]
         [Route("api/workshop/booking/cancel")]
         public Response CancelWorkshopBooking(int workshopId, string studentId, int userId)
         {
