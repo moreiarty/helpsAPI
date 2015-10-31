@@ -224,7 +224,7 @@ namespace UTS.HELPS.WebServices.WebAPI.Controllers
             };
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("api/workshop/wait/count")]
         public WaitListCountResponse CountWorkshopWaiting(int workshopId)
         {

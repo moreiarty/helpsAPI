@@ -4,6 +4,5 @@ C:\Users\Paul\Desktop\HELPS\UTS.HELPS.WebServices.DataObjects\obj\Debug\UTS.HELP
 C:\Users\Paul\Desktop\HELPS\UTS.HELPS.WebServices.DataObjects\obj\Debug\UTS.HELPS.WebServices.DataObjects.pdb
 C:\Users\Paul\Desktop\helpsAPI\UTS.HELPS.WebServices.DataObjects\bin\Debug\UTS.HELPS.WebServices.DataObjects.dll
 C:\Users\Paul\Desktop\helpsAPI\UTS.HELPS.WebServices.DataObjects\bin\Debug\UTS.HELPS.WebServices.DataObjects.pdb
-C:\Users\Paul\Desktop\helpsAPI\UTS.HELPS.WebServices.DataObjects\obj\Debug\UTS.HELPS.WebServices.DataObjects.csprojResolveAssemblyReference.cache
 C:\Users\Paul\Desktop\helpsAPI\UTS.HELPS.WebServices.DataObjects\obj\Debug\UTS.HELPS.WebServices.DataObjects.dll
 C:\Users\Paul\Desktop\helpsAPI\UTS.HELPS.WebServices.DataObjects\obj\Debug\UTS.HELPS.WebServices.DataObjects.pdb
