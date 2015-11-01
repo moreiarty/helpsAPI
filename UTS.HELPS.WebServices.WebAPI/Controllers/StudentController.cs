@@ -9,6 +9,38 @@ namespace UTS.HELPS.WebServices.WebAPI.Controllers
 {
     public class StudentController : BaseController
     {
+        [HttpGet]
+        [Route("api/student")]
+        public StudentResponse GetStudent(string studentId)
+        {
+            try
+            {
+                base.CheckApplicationKey();
+                var student = StudentDb.GetStudent(studentId);
+                if (student == null)
+                    return new StudentResponse()
+                    {
+                        IsSuccess = false,
+                        DisplayMessage = ErrorMessages.STUDENT_NOT_FOUND
+                    };
+
+                return new StudentResponse()
+                {
+                    IsSuccess = true,
+                    Student = student
+                };
+            }
+            catch (Exception e)
+            {
+                string msg = CreateExceptionMessage(e);
+                return new StudentResponse()
+                {
+                    IsSuccess = false,
+                    DisplayMessage = string.Format(ErrorMessages.STUDENT_REGISTER_ERROR, msg)
+                };
+            }
+        }
+
         [HttpPost]
         [Route("api/student/register")]
         public Response RegisterStudent(StudentReg studentReg)

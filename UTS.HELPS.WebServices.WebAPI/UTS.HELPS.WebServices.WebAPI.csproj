@@ -172,6 +172,7 @@
     <Compile Include="Responses\AssignmentListResponse.cs" />
     <Compile Include="Responses\CampusListResponse.cs" />
     <Compile Include="Responses\LecturerListResponse.cs" />
+    <Compile Include="Responses\StudentResponse.cs" />
     <Compile Include="Responses\SessionBookingListResponse.cs" />
     <Compile Include="Responses\Response.cs" />
     <Compile Include="Responses\SessionTypeListResponse.cs" />
