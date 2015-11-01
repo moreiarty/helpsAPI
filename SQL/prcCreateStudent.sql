@@ -1,7 +1,7 @@
 USE elssa_booking;
 GO
 
-CREATE PROCEDURE dbo.prcCreateStudent
+ALTER PROCEDURE dbo.prcCreateStudent
 	@studentID char(10),
 	@dob datetime = null,
 	@gender char(5) = null,
@@ -30,19 +30,52 @@ CREATE PROCEDURE dbo.prcCreateStudent
 	@degree_details char(50) = null,
 	@alternative_contact text = null,
 	@preferred_name nvarchar(50) = null
-AS 
+AS BEGIN
     SET NOCOUNT ON;
 
-	INSERT INTO dbo.students
-		(studentID, dob, gender, degree, status, first_language, country_origin, background, 
-		HSC, HSC_mark, IELTS, IELTS_mark, TOEFL, TOEFL_mark, TAFE, TAFE_mark, CULT, CULT_mark, 
-		InsearchDEEP, InsearchDEEP_mark, InsearchDiploma, InsearchDiploma_mark, 
-		foundationcourse, foundationcourse_mark, created, creatorID, degree_details, alternative_contact, preferred_name)
-	VALUES
-		(@studentID, @dob, @gender, @degree, @status, @first_language, @country_origin, @background, 
-		@HSC, @HSC_mark, @IELTS, @IELTS_mark, @TOEFL, @TOEFL_mark, @TAFE, @TAFE_mark, @CULT, @CULT_mark, 
-		@InsearchDEEP, @InsearchDEEP_mark, @InsearchDiploma, @InsearchDiploma_mark, 
-		@foundationcourse, @foundationcourse_mark, getdate(), @creatorID, @degree_details, @alternative_contact, @preferred_name)
-
+	IF NOT EXISTS (SELECT * FROM dbo.students WHERE studentID = @studentID)
+	   INSERT INTO dbo.students
+			(studentID, dob, gender, degree, status, first_language, country_origin, background, 
+			HSC, HSC_mark, IELTS, IELTS_mark, TOEFL, TOEFL_mark, TAFE, TAFE_mark, CULT, CULT_mark, 
+			InsearchDEEP, InsearchDEEP_mark, InsearchDiploma, InsearchDiploma_mark, 
+			foundationcourse, foundationcourse_mark, created, creatorID, degree_details, alternative_contact, preferred_name)
+		VALUES
+			(@studentID, @dob, @gender, @degree, @status, @first_language, @country_origin, @background, 
+			@HSC, @HSC_mark, @IELTS, @IELTS_mark, @TOEFL, @TOEFL_mark, @TAFE, @TAFE_mark, @CULT, @CULT_mark, 
+			@InsearchDEEP, @InsearchDEEP_mark, @InsearchDiploma, @InsearchDiploma_mark, 
+			@foundationcourse, @foundationcourse_mark, getdate(), @creatorID, @degree_details, @alternative_contact, @preferred_name)
+	ELSE
+		UPDATE dbo.students
+		SET studentID = @studentID, 
+			dob = @dob, 
+			gender = @gender, 
+			degree = @degree, 
+			status = @status, 
+			first_language = @first_language, 
+			country_origin = @country_origin, 
+			background = @background, 
+			HSC = @HSC, 
+			HSC_mark = @HSC_mark, 
+			IELTS = @IELTS, 
+			IELTS_mark = @IELTS_mark, 
+			TOEFL = @TOEFL, 
+			TOEFL_mark = @TOEFL_mark, 
+			TAFE = @TAFE, 
+			TAFE_mark = @TAFE_mark, 
+			CULT = @CULT, 
+			CULT_mark = @CULT_mark, 
+			InsearchDEEP = @InsearchDEEP,
+			InsearchDEEP_mark = @InsearchDEEP_mark, 
+			InsearchDiploma = @InsearchDiploma, 
+			InsearchDiploma_mark = @InsearchDiploma_mark, 
+			foundationcourse = @foundationcourse, 
+			foundationcourse_mark = @foundationcourse_mark, 
+			created = getdate(), 
+			creatorID = @creatorID, 
+			degree_details = @degree_details, 
+			alternative_contact = @alternative_contact, 
+			preferred_name = @preferred_name
+		WHERE studentID = @studentID
+	
 	SET NOCOUNT OFF;
-GO
+END
